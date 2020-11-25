@@ -27,13 +27,14 @@ export default function NaviBar() {
     <Styles>
         <Navbar collapseOn expand="lg" bg="dark" variant="dark">
              <Container>
-                <NavbarBrand>WebDev Blog</NavbarBrand>
+                <NavbarBrand aria-disabled="disabled">WebDev Blog</NavbarBrand>
                 <NavbarToggle aria-controls="responsive-navbar-nav"/>
                     <NavbarCollapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
                             <Nav.Link><Link to="/">Home</Link></Nav.Link>
                             <Nav.Link><Link to="/users">Users</Link></Nav.Link>                           
                             <Nav.Link><Link to="/about">About</Link></Nav.Link>
+                            <Nav.Link><Link to="/cabinet">Personal Account</Link></Nav.Link>
                     </Nav>
                      <Nav>
                         <Button variant="primary" className="mr-2" onClick={handleShow}>Log In</Button>
@@ -43,10 +44,12 @@ export default function NaviBar() {
             </Container>
          </Navbar>
     </Styles>
+    
     <Modal show={show} onide={handleClose}>
-    <ModalHeader closeButton>
+    <ModalHeader closeButton onClick={handleClose}>
         <ModalTitle>Log In</ModalTitle>
     </ModalHeader>
+    
     <ModalBody>
         <form>
             <FormGroup controlId="formBasicEmail">

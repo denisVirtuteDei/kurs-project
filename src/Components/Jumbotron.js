@@ -31,15 +31,8 @@ const Styles = styled.div`
         <Container>
             <h1>Web Developer Blog</h1>
             <p>
-            sdfsdfsdfbfsgsdfgsdfg sdfsdfasdfsdfsdfsdfbfsgsdfgsdfg sdfsdfasdf
-            sdfsdfsdfbfsgsdfgsdfg sdfsdfasdfsdfsdfsdfbfsgsdfgsdfg sdfsdfasdf
-            sdfsdfsdfbfsgsdfgsdfg sdfsdfasdfsdfsdfsdfbfsgsdfgsdfg sdfsdfasdf
-            sdfsdfsdfbfsgsdfgsdfg sdfsdfasdfsdfsdfsdfbfsgsdfgsdfg sdfsdfasdf
-            sdfsdfsdfbfsgsdfgsdfg sdfsdfasdfsdfsdfsdfbfsgsdfgsdfg sdfsdfasdf
-            sdfsdfsdfbfsgsdfgsdfg sdfsdfasdfsdfsdfsdfbfsgsdfgsdfg sdfsdfasdf
-            sdfsdfsdfbfsgsdfgsdfg sdfsdfasdfsdfsdfsdfbfsgsdfgsdfg sdfsdfasdf
-            sdfsdfsdfbfsgsdfgsdfg sdfsdfasdfsdfsdfsdfbfsgsdfgsdfg sdfsdfasdf
-            sdfsdfsdfbfsgsdfgsdfg sdfsdfasdfsdfsdfsdfbfsgsdfgsdfg sdfsdfasdf
+            Налоговая представляет собой какую-то фигню
+            И не спрашивайте что и зачем. Спасибо.
             </p>
         </Container>
    </Jumbo>
