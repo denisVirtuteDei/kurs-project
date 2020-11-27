@@ -1,14 +1,12 @@
 import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NaviBar from "./Components/Navibar";
 import Footer from "./Components/Footer";
-
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-import { Home } from "./Home";
-import { Users } from "./Users";
-import { About } from "./About";
+import { Home } from './Components/Home';
+import { Users } from './Components/Users';
+import { About } from './Components/About';
 import { Cabinet } from "./Cabinet";
 import { FilingApp } from "./Trash/FilingApp";
 import { FilingDec } from "./Trash/FilingDec";
