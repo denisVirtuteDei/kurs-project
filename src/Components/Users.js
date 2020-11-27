@@ -6,11 +6,9 @@ import { Provider } from 'react-redux'
 class Example extends React.Component {
     render() {
         return (
-            <div>
-                <Provider store={store}>
-                    <EntityComponent />
-                </Provider>
-            </div>
+            <Provider store={store}>
+                <EntityComponent />
+            </Provider>
         )
     }
 };

@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Container } from 'react';
 import styled from 'styled-components'
-import sample from './../video/matrix.mp4'
 import { store } from '../Actions/Store.js'
 import { Provider } from 'react-redux'
 import EntityComponent from './EntityPersonsComponent/EntityComponent';
@@ -35,8 +34,6 @@ class Example extends Component {
 
 export const About = () => {
   return (
-    <Container>
-
-    </Container>
+    <Example/>
   )
 }
