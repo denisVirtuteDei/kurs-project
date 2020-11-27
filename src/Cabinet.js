@@ -1,16 +1,19 @@
 import React from "react";
 import { Container, Col, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export const Cabinet = () => (
   <Container>
     <Row>
       <Col>
-        <a href="#">Application for documents</a>
+        <Link to="/addaplication">Application for documents</Link>
       </Col>
       <Col>
-        <a href="/filingapp">FilingApp</a>
+        <Link to="/filingapp">Application for documents</Link>
       </Col>
-      <Col>3 of 3</Col>
+      <Col>
+        <Link to="/filingdec">Application for documents</Link>
+      </Col>
     </Row>
     <Row>
       <Col>1 of 3</Col>

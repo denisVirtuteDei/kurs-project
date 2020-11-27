@@ -11,6 +11,8 @@ import { Users } from "./Users";
 import { About } from "./About";
 import { Cabinet } from "./Cabinet";
 import { FilingApp } from "./Trash/FilingApp";
+import { FilingDec } from "./Trash/FilingDec";
+import { AddAplication } from "./Trash/AddAplication";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route exact path="/about" component={About} />
           <Route exact path="/cabinet" component={Cabinet} />
           <Route exact path="/filingapp" component={FilingApp} />
+          <Route exact path="/filingdec" component={FilingDec} />
+          <Route exact path="/addaplication" component={AddAplication} />
         </Switch>
       </Router>
       <Footer />
