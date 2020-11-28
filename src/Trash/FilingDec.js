@@ -63,9 +63,6 @@ export const FilingDec = () => (
           <Form.Control as="select">
             <option>Ежемесячная</option>
             <option>Еженедельная</option>
-            <option>Еще одна</option>
-            <option>And another one</option>
-            <option>+1</option>
           </Form.Control>
         </Form.Group>
       </Form>

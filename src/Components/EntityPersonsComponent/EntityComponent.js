@@ -6,9 +6,9 @@ import { Container, Table } from 'react-bootstrap'
 
 const EntityComponent = (props) => {
 
-    // useEffect(() => {
-    //     props.fetchAllEntityPersons()
-    // }, [])
+    useEffect(() => {
+        props.fetchAllEntityPersons()
+    }, [])
 
     let entityElements = props.entityList.map((record, index) => {
         return (
@@ -21,7 +21,7 @@ const EntityComponent = (props) => {
     })
 
     return (
-        < Container >
+        <Container >
             <Table stripted brdered hover>
                 <thead>
                     <tr>
@@ -29,7 +29,7 @@ const EntityComponent = (props) => {
                         <th>Org name</th>
                         <th>Org address</th>
                         <th>Telephone</th>
-                    </tr >
+                    </tr>
                 </thead>
                 <tbody>
                     {entityElements}

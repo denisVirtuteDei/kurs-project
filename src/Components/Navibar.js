@@ -12,8 +12,7 @@ import {
   FormLabel,
   FormControl,
   FormText,
-  FormCheck,
-  Form,
+  FormCheck
 } from "react-bootstrap";
 import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 import NavbarToggle from "react-bootstrap/esm/NavbarToggle";
@@ -44,7 +43,7 @@ export default function NaviBar() {
       <Styles>
         <Navbar collapseOn expand="lg" bg="dark" variant="dark">
           <Container>
-            <NavbarBrand aria-disabled="disabled">WebDev Blog</NavbarBrand>
+            <NavbarBrand aria-disabled="false">WebDev Blog</NavbarBrand>
             <NavbarToggle aria-controls="responsive-navbar-nav" />
             <NavbarCollapse id="responsive-navbar-nav">
               <Nav className="mr-auto">

@@ -4,7 +4,7 @@ import { Container, Form, Button } from "react-bootstrap";
 
 export const AddAplication = () => (
   <Container>
-  <Form>
+    <Form>
       <>
         <Form.Check type="radio" id="/cabinet" label="radio 1" />
         <Form.Check type="radio" id="" label="radio 2" />
@@ -19,7 +19,7 @@ export const AddAplication = () => (
       </>
 
       <div className="mb-2">
-        <Button variant="success" onClick={ () => {} }>Перейти</Button>
+        <Button variant="success" onClick={() => { }}>Перейти</Button>
       </div>
     </Form>
   </Container>
