@@ -1,6 +1,6 @@
 import React from 'react'
 import { Carousel, CarouselItem } from 'react-bootstrap'
-import city from '../city.jpg';
+import city from '../../city.jpg';
 
 
 

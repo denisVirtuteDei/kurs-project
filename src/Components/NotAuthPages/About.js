@@ -17,11 +17,12 @@ import { Container } from 'react-bootstrap';
 // }
 // `
 
-
-export const About = () => {
+const About = () => {
   return (
     <Container>
 
     </Container>
   )
-}
+};
+
+export default About;

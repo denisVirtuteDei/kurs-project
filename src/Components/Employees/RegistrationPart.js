@@ -1,21 +1,6 @@
 import React from "react";
-import { Container, Col, Row, Form } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 import Toolbar from '@material-ui/core/Toolbar'
-
-let checkboxValues = [
-  {
-    type: "Признак внесения изменеия и дополнение в налоговую декларацию",
-    id: 0
-  },
-  {
-    type: "Использовать данные предыдущего отчетного периода",
-    id: 1
-  },
-  {
-    type: "Округлять суммы уплаты до наличных",
-    id: 2
-  }
-]
 
 let placeholders = [
   {
@@ -40,8 +25,7 @@ let placeholders = [
   },
 ];
 
-
-export const FilingDec = () => (
+export const RegistrationPart = () => (
   <Container>
     <Toolbar />
     <div className="mt-2">
@@ -56,6 +40,7 @@ export const FilingDec = () => (
         }
       </Form>
     </div>
+
     <hr />
 
     <div className="mt-2">

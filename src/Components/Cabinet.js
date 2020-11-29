@@ -2,10 +2,7 @@ import React from "react";
 import { Container, Col, Row, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
-export const Cabinet = () => {
-
-
-
+const Cabinet = () => {
   return (
     <Container style={{padding: "15px"}}>
       <Row>
@@ -23,3 +20,5 @@ export const Cabinet = () => {
     </Container>
   )
 };
+
+export default Cabinet;

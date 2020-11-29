@@ -1,9 +1,9 @@
 import React from 'react';
-import { Function } from './Functions'
+import Function from './Functions'
 import Slider from './Slider';
 import Jumbotron from './Jumbotron';
 
-export const Home = () => {
+const Home = () => {
   return (
     <div>
       <Slider />
@@ -12,3 +12,5 @@ export const Home = () => {
     </div>
   );
 }
+
+export default Home;

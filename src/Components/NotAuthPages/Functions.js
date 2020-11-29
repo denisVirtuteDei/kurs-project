@@ -1,8 +1,8 @@
 import React from 'react'
 import { Card, CardImg, Container, Row, Col } from 'react-bootstrap';
-import city from '../city.jpg';
+import city from '../../city.jpg';
 
-export const Function = () => {
+const Function = () => {
     return (
         <Container style={{paddingTop: '2rem', paddingBottom: '2rem'}}>
             <Row>
@@ -46,3 +46,5 @@ export const Function = () => {
         </Container>
     );
 }
+
+export default Function;

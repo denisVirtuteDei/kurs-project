@@ -34,10 +34,10 @@ export default function LeftToolBar() {
             <Toolbar />
             <List>
                 {
-                    sidebarUrls.map((el) => (
-                        <NavLink to={"/taxpayers" + el.url} style={{textDecoration: "none", color: "black"}}>
+                    sidebarUrls.map((el, index) => (
+                        <NavLink to={"/taxpayers" + el.url} style={{ textDecoration: "none", color: "black" }}>
                             <ListItem button key={el.title}>
-                                <ListItemIcon>{el.index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                                <ListItemIcon>{index % 2 === 1 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                                 <ListItemText primary={el.title} />
                             </ListItem>
                         </NavLink>
@@ -48,7 +48,7 @@ export default function LeftToolBar() {
             <List>
                 {['All mail', 'Trash', 'Spam'].map((text, index) => (
                     <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                        <ListItemIcon>{index % 2 === 1 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                         <ListItemText primary={text} />
                     </ListItem>
                 ))}

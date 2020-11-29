@@ -1,6 +1,6 @@
 import React from 'react';
 import { Jumbotron as Jumbo, Container } from 'react-bootstrap'
-import city from '../city.jpg';
+import city from '../../city.jpg';
 import styled from 'styled-components'
 
 const Styles = styled.div`
