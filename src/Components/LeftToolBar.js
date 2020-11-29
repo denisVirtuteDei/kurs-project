@@ -1,51 +1,48 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import Toolbar from '@material-ui/core/Toolbar'
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import { NavLink } from "react-router-dom";
 
-const drawerWidth = 240;
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
+const sidebarUrls = [
+    {
+        title: 'Registration',
+        url: '/registration'
     },
-    appBar: {
-        zIndex: theme.zIndex.drawer + 1,
+    {
+        title: 'Sent declarations',
+        url: '/declarations'
     },
-    drawer: {
-        width: drawerWidth,
-        flexShrink: 0,
+    {
+        title: 'Sent checks',
+        url: '/checks'
     },
-    drawerPaper: {
-        width: drawerWidth,
-    },
-    drawerContainer: {
-        overflow: 'auto',
-    },
-}));
+    {
+        title: 'Debt info',
+        url: '/debt_info'
+    }
+]
 
 export default function LeftToolBar() {
-    const classes = useStyles();
-
     return (
-        <div className={classes.drawerContainer} >
+        <div style={{ width: 250 }} >
+            <Toolbar />
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
+                {
+                    sidebarUrls.map((el) => (
+                        <NavLink to={"/taxpayers" + el.url} style={{textDecoration: "none", color: "black"}}>
+                            <ListItem button key={el.title}>
+                                <ListItemIcon>{el.index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                                <ListItemText primary={el.title} />
+                            </ListItem>
+                        </NavLink>
+                    ))
+                }
             </List>
             <Divider />
             <List>

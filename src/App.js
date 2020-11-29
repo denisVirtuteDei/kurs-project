@@ -24,7 +24,7 @@ const App = () => {
           <Route exact path="/users" render={Users} />
           <Route exact path="/about" component={About} />
           <Route exact path="/cabinet" component={Cabinet} />
-          <Route exact path="/taxpayers" component={TaxpayersMaket} />
+          <Route path="/taxpayers" component={TaxpayersMaket} />
         </Switch>
       </BrowserRouter>
       <Footer />

@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Col, Row, Form } from "react-bootstrap";
+import Toolbar from '@material-ui/core/Toolbar'
 
 let checkboxValues = [
   {
@@ -16,57 +17,43 @@ let checkboxValues = [
   }
 ]
 
+let placeholders = [
+  {
+    title: "УНП",
+    placeholder: "Введите УНП (9 цифр)"
+  },
+  {
+    title: "ИМНС",
+    placeholder: "Введите ИМНС"
+  },
+  {
+    title: "Наименование",
+    placeholder: "Введите наименование предприятия"
+  },
+  {
+    title: "Адрес",
+    placeholder: "Введите адрес"
+  },
+  {
+    title: "ФИО",
+    placeholder: "Введите ФИО"
+  },
+];
+
+
 export const FilingDec = () => (
   <Container>
+    <Toolbar />
     <div className="mt-2">
       <Form>
-        <Form.Group as={Row} controlId="formPlaintext">
-          <Form.Label column sm="7">
-            УНП
-          </Form.Label>
-          <Col sm="5">
-            <Form.Control type="text" placeholder="Введите УНП (9 цифр)" />
-          </Col>
-        </Form.Group>
-
-        <Form.Group as={Row} controlId="formPlaintext">
-          <Form.Label column sm="7">
-            ИМНС
-          </Form.Label>
-          <Col sm="5">
-            <Form.Control type="text" placeholder="Введите ИМНС" />
-          </Col>
-        </Form.Group>
-
-        <Form.Group as={Row} controlId="formPlaintext">
-          <Form.Label column sm="7">
-            Наименование
-          </Form.Label>
-          <Col sm="5">
-            <Form.Control
-              type="text"
-              placeholder="Введите наименование пердприятия"
-            />
-          </Col>
-        </Form.Group>
-
-        <Form.Group as={Row} controlId="formPlaintext">
-          <Form.Label column sm="7">
-            Адрес
-          </Form.Label>
-          <Col sm="5">
-            <Form.Control type="text" placeholder="Введите адрес" />
-          </Col>
-        </Form.Group>
-
-        <Form.Group as={Row} controlId="formPlaintext">
-          <Form.Label column sm="7">
-            ФИО
-          </Form.Label>
-          <Col sm="5">
-            <Form.Control type="text" placeholder="Введите ФИО" />
-          </Col>
-        </Form.Group>
+        {
+          placeholders.map((el) => (
+            <Form.Group controlId="formPlaintext">
+              <Form.Label sm="7">{el.title}</Form.Label>
+              <Form.Control xs="6" type="text" placeholder={el.placeholder} />
+            </Form.Group>
+          ))
+        }
       </Form>
     </div>
     <hr />
@@ -82,24 +69,6 @@ export const FilingDec = () => (
         </Form.Group>
       </Form>
     </div>
-
-    {/* <Form>
-      {checkboxValues.map((value) => (
-        <div key={`default-checkbox-${value.id}`} className="mb-3">
-          <Form.Check
-            type="checkbox"
-            id={`default-checkbox-${value.id}`}
-            label={value.type}
-          />
-        </div>
-      ))}
-      <hr />
-      {["checkbox"].map((type) => (
-        <div key={`default-${type}`} className="mb-3">
-          <Form.Check type={type} id={`default-${type}`} label={`Ликвидация`} />
-        </div>
-      ))}
-    </Form> */}
   </Container>
 )
 
