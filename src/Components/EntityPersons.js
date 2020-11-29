@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
-import * as actions from '../../Actions/EntityCompAction'
+import React, { useEffect } from 'react';
 import { Container, Table } from 'react-bootstrap'
 
-
-const EntityComponent = (props) => {
+export const EntityPersons = (props) => {
 
     useEffect(() => {
         props.fetchAllEntityPersons()
-    }, [])
+    })
 
     let entityElements = props.entityList.map((record, index) => {
         return (
@@ -17,7 +14,8 @@ const EntityComponent = (props) => {
                 <th>{record.shortOrgTitle}</th>
                 <th>{record.orgAddress}</th>
                 <th>{record.telephone}</th>
-            </tr>)
+            </tr>
+        )
     })
 
     return (
@@ -38,13 +36,3 @@ const EntityComponent = (props) => {
         </Container >
     )
 };
-
-const mapStateToProps = state => ({
-    entityList: state.reducer.data
-});
-
-const mapActionToProps = {
-    fetchAllEntityPersons: actions.fetchall
-}
-
-export default connect(mapStateToProps, mapActionToProps)(EntityComponent);

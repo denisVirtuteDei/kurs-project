@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardImg, Collapse, Container, Row, Button, Col } from 'react-bootstrap';
+import { Card, CardImg, Container, Row, Col } from 'react-bootstrap';
 import city from '../city.jpg';
 
 export const Function = () => {

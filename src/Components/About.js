@@ -1,8 +1,9 @@
-import React, { Component, Container } from 'react';
-import styled from 'styled-components'
-import { store } from '../Actions/Store.js'
-import { Provider } from 'react-redux'
-import EntityComponent from './EntityPersonsComponent/EntityComponent';
+import React from 'react';
+import { Container } from 'react-bootstrap';
+// import styled from 'styled-components'
+// import { store } from '../Redux/Stores/Store.js'
+// import { Provider } from 'react-redux'
+// import EntityComponent from './HOC/EntityComponents/EntityComponent';
 
 
 // let Style = styled.div`
@@ -16,24 +17,11 @@ import EntityComponent from './EntityPersonsComponent/EntityComponent';
 // }
 // `
 
-class Example extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div>
-        {/* <Provider store={store}>
-          <EntityComponent />
-        </Provider> */}
-      </div>
-    )
-  }
-};
 
 export const About = () => {
   return (
-    <Example/>
+    <Container>
+
+    </Container>
   )
 }

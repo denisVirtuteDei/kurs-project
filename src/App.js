@@ -10,25 +10,27 @@ import { About } from './Components/About';
 import { Cabinet } from "./Components/Cabinet";
 import { FilingApp } from "./Trash/FilingApp";
 import { FilingDec } from "./Trash/FilingDec";
-import { AddAplication } from "./Trash/AddAplication";
+import { Provider } from "react-redux";
+import { store } from './Redux/Stores/Store.js'
+//import { AddAplication } from "./Trash/AddAplication";
 
-function App() {
+const App = () => {
   return (
-    <div>
+    <Provider store={store}>
       <BrowserRouter>
         <NaviBar />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/users" component={Users} />
+          <Route exact path="/users" render={Users} />
           <Route exact path="/about" component={About} />
           <Route exact path="/cabinet" component={Cabinet} />
           <Route exact path="/filingapp" component={FilingApp} />
           <Route exact path="/filingdec" component={FilingDec} />
-          <Route exact path="/addaplication" component={AddAplication} />
+          {/* <Route exact path="/addaplication" component={AddAplication} /> */}
         </Switch>
       </BrowserRouter>
       <Footer />
-    </div>
+    </Provider>
   );
 }
 
