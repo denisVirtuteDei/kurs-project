@@ -1,6 +1,21 @@
 import React from "react";
 import { Container, Col, Row, Form } from "react-bootstrap";
 
+let checkboxValues = [
+  {
+    type: "Признак внесения изменеия и дополнение в налоговую декларацию",
+    id: 0
+  },
+  {
+    type: "Использовать данные предыдущего отчетного периода",
+    id: 1
+  },
+  {
+    type: "Округлять суммы уплаты до наличных",
+    id: 2
+  }
+]
+
 export const FilingDec = () => (
   <Container>
     <div className="mt-2">
@@ -68,31 +83,13 @@ export const FilingDec = () => (
       </Form>
     </div>
 
-    <Form>
-      {["checkbox"].map((type) => (
-        <div key={`default-${type}`} className="mb-3">
+    {/* <Form>
+      {checkboxValues.map((value) => (
+        <div key={`default-checkbox-${value.id}`} className="mb-3">
           <Form.Check
-            type={type}
-            id={`default-${type}`}
-            label={`Признак внесения изменеия и дополнение в налоговую декларацию`}
-          />
-        </div>
-      ))}
-      {["checkbox"].map((type) => (
-        <div key={`default-${type}`} className="mb-3">
-          <Form.Check
-            type={type}
-            id={`default-${type}`}
-            label={`Использовать данные предыдущего отчетного периода`}
-          />
-        </div>
-      ))}
-      {["checkbox"].map((type) => (
-        <div key={`default-${type}`} className="mb-3">
-          <Form.Check
-            type={type}
-            id={`default-${type}`}
-            label={`Округлять суммы уплаты до наличных`}
+            type="checkbox"
+            id={`default-checkbox-${value.id}`}
+            label={value.type}
           />
         </div>
       ))}
@@ -102,6 +99,7 @@ export const FilingDec = () => (
           <Form.Check type={type} id={`default-${type}`} label={`Ликвидация`} />
         </div>
       ))}
-    </Form>
+    </Form> */}
   </Container>
-);
+)
+
