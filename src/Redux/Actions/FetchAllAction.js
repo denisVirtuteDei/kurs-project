@@ -1,8 +1,10 @@
-import api, { ACTION_TYPES } from './Api';
+import api from './Api';
+import { ACTION_TYPES } from '../Constants/Types';
 
-export const fetchAll = () => dispatch => {
+const fetchAll = (baseUrl) => dispatch => {
+    debugger;
     api
-        .entityComp()
+        .crudApi(baseUrl)
         .fetchAll()
         .then(response => {
             dispatch({
@@ -11,4 +13,6 @@ export const fetchAll = () => dispatch => {
             })
         })
         .catch(err => console.log(err))
-}
+};
+
+export default fetchAll;

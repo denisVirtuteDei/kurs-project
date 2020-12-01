@@ -5,6 +5,7 @@ import { RegistrationPart } from './Employees/RegistrationPart';
 import { NewDeclarationPart } from './Taxpayers/NewDeclarationPart';
 import LeftToolBar from './LeftToolBar'
 import { Switch, Route } from "react-router-dom";
+import DebtInfoContainer from "./HOC/DebtInfoContainer";
 
 export const TaxpayersMaket = () => {
     return (
@@ -18,7 +19,7 @@ export const TaxpayersMaket = () => {
                         {/* <Route exact path="/taxpayers/registration" component={RegistrationPart} /> */}
                         <Route exact path="/taxpayers/declarations" component={NewDeclarationPart} />
                         <Route exact path="/taxpayers/checks" component={RegistrationPart} />
-                        <Route exact path="/taxpayers/debt_info" component={RegistrationPart} />
+                        <Route exact path="/taxpayers/debt_info" component={DebtInfoContainer} />
                     </Switch>
                 </Grid>
             </Grid>

@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { Container, Table } from 'react-bootstrap'
 
-export const EntityPersons = (props) => {
+const EntityPersons = (props) => {
 
     useEffect(() => {
         props.fetchAllEntityPersons()
-    })
+    }, [])
 
     let entityElements = props.entityList.map((record, index) => {
         return (
@@ -36,3 +36,5 @@ export const EntityPersons = (props) => {
         </Container >
     )
 };
+
+export default EntityPersons;

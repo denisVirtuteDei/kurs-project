@@ -1,0 +1,10 @@
+
+export const ACTION_TYPES = {
+    CREATE: 'CREATE',
+    DELETE: 'DELETE',
+    UPDATE: 'UPDATE',
+    FETCH_ALL: 'FETCH_ALL'
+}
+
+export const FETCH_ALL_DEBT_INFO = 'FETCH_ALL_DEBT_INFO';
+export const FETCH_ALL_ENTITIES = 'FETCH_ALL_ENTITIES';

@@ -1,15 +1,16 @@
 import { connect } from 'react-redux'
-import { fetchAll } from '../../Redux/Actions/EntityContainerAction'
-import { EntityPersons } from '../EntityPersons';
+import { fetchAllEntityPersons } from '../../Redux/Actions/EntityPersonsAction'
+import EntityPersons from '../EntityPersons';
 
 const mapStateToProps = (state) => {
-    return {
+    let obj = {
         entityList: state.entityPersons.data
     }
+    return obj;
 };
 
 const mapDispatchToProps = ({
-    fetchAllEntityPersons: fetchAll
+    fetchAllEntityPersons: fetchAllEntityPersons
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EntityPersons);

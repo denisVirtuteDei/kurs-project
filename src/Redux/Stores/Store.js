@@ -4,12 +4,14 @@ import { entityReducer } from '../Reducers/EntityReducer';
 import { personReducer } from '../Reducers/PersonReducer';
 import { employeeReducer } from '../Reducers/EmployeeReducer';
 import { authReducer } from '../Reducers/AuthReducer';
+import { debtInfoReducer } from '../Reducers/DebtInfoReducer';
 
 export const reducers = combineReducers({
     entityPersons: entityReducer,
     persons: personReducer,
     authorization: authReducer,
-    employeeReducer: employeeReducer
+    employees: employeeReducer,
+    debtInfo: debtInfoReducer
 });
 
 export const store = createStore(
