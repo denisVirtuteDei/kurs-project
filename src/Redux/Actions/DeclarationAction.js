@@ -17,30 +17,30 @@ export const createDeclaration = (data, onSuccess) => dispatch => {
         .catch(err => console.log(err))
 };
 
-export const updateDeclaration = (id, data, onSuccess) => dispatch => {
-    api
-        .crudApi(baseUrl)
-        .update(id, data)
-        .then(response => {
-            dispatch({
-                type: UPDATE_DECLARATION,
-                payload: {id, ...data}
-            })
-            onSuccess();
-        })
-        .catch(err => console.log(err))
-};
+// export const updateDeclaration = (id, data, onSuccess) => dispatch => {
+//     api
+//         .crudApi(baseUrl)
+//         .update(id, data)
+//         .then(response => {
+//             dispatch({
+//                 type: UPDATE_DECLARATION,
+//                 payload: {id, ...data}
+//             })
+//             onSuccess();
+//         })
+//         .catch(err => console.log(err))
+// };
 
-export const deleteDeclaration = (id, onSuccess) => dispatch => {
-    api
-        .crudApi(baseUrl)
-        .delete(id)
-        .then(response => {
-            dispatch({
-                type: DELETE_DECLARATION,
-                payload: id
-            })
-            onSuccess();
-        })
-        .catch(err => console.log(err))
-};
+// export const deleteDeclaration = (id, onSuccess) => dispatch => {
+//     api
+//         .crudApi(baseUrl)
+//         .delete(id)
+//         .then(response => {
+//             dispatch({
+//                 type: DELETE_DECLARATION,
+//                 payload: id
+//             })
+//             onSuccess();
+//         })
+//         .catch(err => console.log(err))
+// };

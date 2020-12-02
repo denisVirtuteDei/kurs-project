@@ -1,8 +1,7 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Grid from '@material-ui/core/Grid'
-import { RegistrationPart } from './Employees/RegistrationPart';
-import { NewCheckPart } from './Taxpayers/NewCheckPart';
+import NewCheckContainer from './HOC/NewCheckContainer';
 import LeftToolBar from './LeftToolBar'
 import { Switch, Route } from "react-router-dom";
 import DebtInfoContainer from "./HOC/DebtInfoContainer";
@@ -34,7 +33,7 @@ export const TaxpayersMaket = () => {
                 <Grid item xs={10}>
                     <Switch>
                         <Route exact path="/taxpayers/declarations" component={NewDeclarationContainer} />
-                        <Route exact path="/taxpayers/checks" component={NewCheckPart} />
+                        <Route exact path="/taxpayers/checks" component={NewCheckContainer} />
                         <Route exact path="/taxpayers/debt_info" component={DebtInfoContainer} />
                     </Switch>
                 </Grid>
