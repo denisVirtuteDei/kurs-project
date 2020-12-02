@@ -2,7 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Grid from '@material-ui/core/Grid'
 import { RegistrationPart } from './Employees/RegistrationPart';
-import { NewDeclarationPart } from './Employees/NewDeclarationPart';
+import { NewDeclarationPart } from './Taxpayers/NewDeclarationPart';
 import LeftToolBar from './LeftToolBar'
 import { Switch, Route } from "react-router-dom";
 import DebtInfoContainer from "./HOC/DebtInfoContainer";
@@ -10,15 +10,15 @@ import EntityContainer from './HOC/EntityContainer'
 
 const sidebarUrls = [
     {
-        title: 'New declarations',
-        url: '/employees/declarations'
+        title: 'Messages',
+        url: '/employees/messages'
     },
     {
         title: 'Registration',
         url: '/employees/registration'
     },
     {
-        title: 'New checks',
+        title: 'Departure organization',
         url: '/employees/checks'
     },
     {

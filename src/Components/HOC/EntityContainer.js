@@ -3,10 +3,9 @@ import { fetchAllEntityPersons } from '../../Redux/Actions/EntityPersonsAction'
 import EntityPersons from '../EntityPersons';
 
 const mapStateToProps = (state) => {
-    let obj = {
+    return {
         entityList: state.entityPersons.data
-    }
-    return obj;
+    };
 };
 
 const mapDispatchToProps = ({
