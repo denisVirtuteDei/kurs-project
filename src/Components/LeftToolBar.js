@@ -9,33 +9,14 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import { NavLink } from "react-router-dom";
 
-const sidebarUrls = [
-    {
-        title: 'Registration',
-        url: '/registration'
-    },
-    {
-        title: 'Sent declarations',
-        url: '/declarations'
-    },
-    {
-        title: 'Sent checks',
-        url: '/checks'
-    },
-    {
-        title: 'Debt info',
-        url: '/debt_info'
-    }
-]
-
-export default function LeftToolBar() {
+export default function LeftToolBar(props) {
     return (
         <div style={{ width: 250 }} >
             <Toolbar />
             <List>
                 {
-                    sidebarUrls.map((el, index) => (
-                        <NavLink to={"/taxpayers" + el.url} style={{ textDecoration: "none", color: "black" }}>
+                    props.sidebarUrls.map((el, index) => (
+                        <NavLink to={el.url} style={{ textDecoration: "none", color: "black" }}>
                             <ListItem button key={el.title}>
                                 <ListItemIcon>{index % 2 === 1 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                                 <ListItemText primary={el.title} />

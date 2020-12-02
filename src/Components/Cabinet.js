@@ -7,7 +7,7 @@ const Cabinet = () => {
     <Container style={{padding: "15px"}}>
       <Row>
         <Col>
-          <NavLink to="/filingdec">
+          <NavLink to="/employees">
             <Button >For Employees</Button>
           </NavLink>
         </Col>

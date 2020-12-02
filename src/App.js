@@ -11,6 +11,7 @@ import Cabinet from "./Components/Cabinet";
 import { Provider } from "react-redux";
 import { store } from './Redux/Stores/Store.js'
 import { TaxpayersMaket } from "./Components/TaxpayersMaket";
+import { EmployeeMaket } from "./Components/EmployeeMaket";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route exact path="/users" render={Users} />
           <Route exact path="/about" component={About} />
           <Route exact path="/cabinet" component={Cabinet} />
+          <Route path="/employees" component={EmployeeMaket} />
           <Route path="/taxpayers" component={TaxpayersMaket} />
         </Switch>
       </BrowserRouter>
