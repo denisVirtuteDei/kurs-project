@@ -16,10 +16,11 @@ export const fetchByIdCheckInfo = () => dispatch => {
         .catch(err => console.log(err))
 }
 
-const formateDate = data => {
+const formateData = data => {
     let dateTemplate = require('date-template');
     return {
         ...data,
+        finalSum: (parseFloat(data.finalSum)),
         payedDate: (data.payedDate ? data.payedDate : dateTemplate('%Y-%M-%D', new Date()))
     }
 }
@@ -28,7 +29,7 @@ const createCheckUrl = 'https://localhost:44383/api/BankCheck/';
 
 export const createBankCheck = (data, onSuccess) => dispatch => {
     debugger;
-    let _data = formateDate(data);
+    let _data = formateData(data);
     api
         .crudApi(createCheckUrl)
         .create(_data)

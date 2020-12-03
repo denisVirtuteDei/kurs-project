@@ -65,11 +65,11 @@ export const NewCheckPart = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (validate()) {
+      debugger;
       let check = {
         ...values,
         fkRegPerson: 2
       }
-      debugger;
       //console.log(check);
       props.createCheck(check, () => { alert('inserted.') })
     }
@@ -135,53 +135,3 @@ export const NewCheckPart = (props) => {
     </Container >
   )
 }
-
-/* <Grid item xs={3}>
-            <FormControl
-              variant="outlined"
-              className={classes.formControl}
-              {...(errors.ncea && { error: true })}
-            >
-              <InputLabel id="demo-simple-select-outlined-label">NCEA</InputLabel>
-              <Select
-                labelId="demo-simple-select-outlined-label"
-                name="ncea"
-                id="demo-simple-select-outlined"
-                value={values.ncea}
-                onChange={handleChange}
-                label="NCEA"
-              >
-                {
-                  props.nceaInfoList.map((el) => {
-                    return (
-                      <MenuItem value={el.id}>{el.ncea}</MenuItem>
-                    )
-                  })
-                }
-              </Select>
-              {errors.ncea && (<FormHelperText>{errors.ncea}</FormHelperText>)}
-            </FormControl>
-          </Grid>
-         <Grid item xs={3}>
-            <FormControl variant="outlined" className={classes.formControl}
-              {...(errors.fkBankCheck && { error: true })}>
-              <InputLabel id="demo-simple-select-outlined-label">Check ID</InputLabel>
-              <Select
-                labelId="demo-simple-select-outlined-label"
-                name="fkBankCheck"
-                id="demo-simple-select-outlined"
-                value={values.fkBankCheck}
-                onChange={handleChange}
-                label="Check ID"
-              >
-                {
-                  props.checkInfoList.map((el) => {
-                    return (
-                      <MenuItem value={el.checkId}>{el.title}</MenuItem>
-                    )
-                  })
-                }
-              </Select>
-              {errors.fkBankCheck && <FormHelperText>{errors.fkBankCheck}</FormHelperText>}
-            </FormControl>
-          </Grid> */
