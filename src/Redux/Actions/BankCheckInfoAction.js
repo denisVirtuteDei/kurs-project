@@ -1,11 +1,27 @@
 import api from './Api';
-import { FETCH_BY_ID_BANK_CHECK, CREATE_BANK_CHECK } from '../Constants/Types';
+import { FETCH_BY_ID_BANK_CHECK, CREATE_BANK_CHECK, ACTION_TYPES } from '../Constants/Types';
 
-const baseUrl = 'https://localhost:44383/api/BankCheckInfo/';
+const fetchByIdUrl = 'https://localhost:44383/api/BankCheckInfo/';
+const bankCheckUrl = 'https://localhost:44383/api/BankCheck/';
 
+//fetch all b/c 
+export const fetchAllBankChecks = () => dispatch => {
+    api
+        .crudApi(bankCheckUrl)
+        .fetchAll()
+        .then(response => {
+            dispatch({
+                type: ACTION_TYPES.FETCH_ALL,
+                payload: response.data
+            })
+        })
+        .catch(err => console.log(err))
+}
+
+//fetch by person unp
 export const fetchByIdCheckInfo = () => dispatch => {
     api
-        .crudApi(baseUrl)
+        .crudApi(fetchByIdUrl)
         .fetchById(503612177)
         .then(response => {
             dispatch({
@@ -25,13 +41,11 @@ const formateData = data => {
     }
 }
 
-const createCheckUrl = 'https://localhost:44383/api/BankCheck/';
-
 export const createBankCheck = (data, onSuccess) => dispatch => {
     debugger;
     let _data = formateData(data);
     api
-        .crudApi(createCheckUrl)
+        .crudApi(bankCheckUrl)
         .create(_data)
         .then(response => {
             dispatch({
@@ -42,3 +56,17 @@ export const createBankCheck = (data, onSuccess) => dispatch => {
         })
         .catch(err => console.log(err))
 }
+
+export const updateBankCheckCorrectness = (id, data, onSuccess) => dispatch => {
+    api
+        .crudApi(bankCheckUrl)
+        .update(id, data)
+        .then(response => {
+            dispatch({
+                type: ACTION_TYPES.UPDATE,
+                payload: {id, ...data}
+            })
+            onSuccess();
+        })
+        .catch(err => console.log(err))
+};

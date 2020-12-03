@@ -1,7 +1,20 @@
 import api from './Api';
-import { CREATE_DECLARATION, UPDATE_DECLARATION, DELETE_DECLARATION } from '../Constants/Types';
+import { CREATE_DECLARATION, UPDATE_DECLARATION, ACTION_TYPES } from '../Constants/Types';
 
 const baseUrl = 'https://localhost:44383/api/PayedTaxes';
+
+export const fetchAllDeclaration = () => dispatch => {
+    api
+        .crudApi(baseUrl)
+        .fetchAll()
+        .then(response => {
+            dispatch({
+                type: ACTION_TYPES.FETCH_ALL,
+                payload: response.data
+            })
+        })
+        .catch(err => console.log(err))
+}
 
 export const createDeclaration = (data, onSuccess) => dispatch => {
     api
@@ -17,19 +30,19 @@ export const createDeclaration = (data, onSuccess) => dispatch => {
         .catch(err => console.log(err))
 };
 
-// export const updateDeclaration = (id, data, onSuccess) => dispatch => {
-//     api
-//         .crudApi(baseUrl)
-//         .update(id, data)
-//         .then(response => {
-//             dispatch({
-//                 type: UPDATE_DECLARATION,
-//                 payload: {id, ...data}
-//             })
-//             onSuccess();
-//         })
-//         .catch(err => console.log(err))
-// };
+export const updateDeclarationCorrectness = (id, data, onSuccess) => dispatch => {
+    api
+        .crudApi(baseUrl)
+        .update(id, data)
+        .then(response => {
+            dispatch({
+                type: UPDATE_DECLARATION,
+                payload: {id, ...data}
+            })
+            onSuccess();
+        })
+        .catch(err => console.log(err))
+};
 
 // export const deleteDeclaration = (id, onSuccess) => dispatch => {
 //     api

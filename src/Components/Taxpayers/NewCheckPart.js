@@ -7,6 +7,14 @@ import Grid from '@material-ui/core/Grid'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 
+
+  //TODO
+  //
+  //Init fkRegPerson with Auth
+  //
+
+
+
 const useStyles = makeStyles((theme) => ({
   formControl: {
     marginTop: theme.spacing(3),
@@ -20,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const initialFieldVales = {
-  fkRegPerson: 2,
+  fkRegPerson: 0,
   title: '',
   finalSum: 0,
   payedDate: '',
@@ -61,16 +69,14 @@ export const NewCheckPart = (props) => {
     });
     validate(fieldValue);
   };
-
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     if (validate()) {
-      debugger;
       let check = {
         ...values,
         fkRegPerson: 2
       }
-      //console.log(check);
       props.createCheck(check, () => { alert('inserted.') })
     }
   }

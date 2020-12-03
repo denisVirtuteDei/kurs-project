@@ -40,20 +40,6 @@ export const RegistrationPart = () => (
         }
       </Form>
     </div>
-
-    <hr />
-
-    <div className="mt-2">
-      <Form>
-        <Form.Group controlId="exampleForm.ControlSelect1">
-          <Form.Label>Тип декларации</Form.Label>
-          <Form.Control as="select">
-            <option>Ежемесячная</option>
-            <option>Еженедельная</option>
-          </Form.Control>
-        </Form.Group>
-      </Form>
-    </div>
   </Container>
 )
 
