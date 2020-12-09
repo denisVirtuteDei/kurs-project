@@ -15,8 +15,8 @@ import { EmployeeMaket } from "./Components/EmployeeMaket";
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <BrowserRouter>
+    <BrowserRouter>
+      <Provider store={store}>
         <NaviBar />
         <Switch>
           <Route exact path="/" component={Home} />
@@ -26,9 +26,9 @@ const App = () => {
           <Route path="/employees" component={EmployeeMaket} />
           <Route path="/taxpayers" component={TaxpayersMaket} />
         </Switch>
-      </BrowserRouter>
-      <Footer />
-    </Provider>
+        <Footer />
+      </Provider>
+    </BrowserRouter>
   );
 }
 

@@ -14,8 +14,8 @@ export default function Slider() {
                     alt="First slide"
                 />
                 <Carousel.Caption>
-                    <h3>Web Developer Blog</h3>
-                    <p>Do nothing</p>
+                    <h3>Tax Office</h3>
+                    <p>Welcome</p>
                 </Carousel.Caption>
             </CarouselItem>
         </Carousel>

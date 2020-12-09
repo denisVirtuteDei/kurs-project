@@ -1,4 +1,9 @@
-import { CREATE_DECLARATION, UPDATE_DECLARATION, DELETE_DECLARATION } from '../Constants/Types';
+import { 
+    CREATE_DECLARATION,
+    UPDATE_DECLARATION, 
+    DELETE_DECLARATION,
+    FETCH_PERSONS_DECLARATIONS, 
+} from '../Constants/Types';
 
 const initialState = {
     data: []
@@ -6,6 +11,11 @@ const initialState = {
 
 export const declarationReducer = (state = initialState, action) => {
     switch (action.type) {
+        case FETCH_PERSONS_DECLARATIONS:
+            return {
+                ...state,
+                data: action.payload
+            };
         case CREATE_DECLARATION:
             return {
                 ...state,

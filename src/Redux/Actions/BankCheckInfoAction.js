@@ -1,17 +1,26 @@
 import api from './Api';
-import { FETCH_BY_ID_BANK_CHECK, CREATE_BANK_CHECK, ACTION_TYPES } from '../Constants/Types';
+import { 
+    CREATE_BANK_CHECK,
+    UPDATE_BANK_CHECK,
+    FETCH_PERSONS_CHECKS,
+    FETCH_BY_ID_BANK_CHECK, 
+} from '../Constants/Types';
 
 const fetchByIdUrl = 'https://localhost:44383/api/BankCheckInfo/';
+const fetchChecksUrl = 'https://localhost:44383/api/PersonsChecksInfo/';
 const bankCheckUrl = 'https://localhost:44383/api/BankCheck/';
 
-//fetch all b/c 
-export const fetchAllBankChecks = () => dispatch => {
+//fetch all b/c with persons info
+export const fetchChecks = (deadline) => dispatch => {
+    let dateTemplate = require('date-template');
+    let date = dateTemplate('%Y-%M-%D', deadline);
+
     api
-        .crudApi(bankCheckUrl)
+        .crudApi(fetchChecksUrl+`${date}/`)
         .fetchAll()
         .then(response => {
             dispatch({
-                type: ACTION_TYPES.FETCH_ALL,
+                type: FETCH_PERSONS_CHECKS,
                 payload: response.data
             })
         })
@@ -63,7 +72,7 @@ export const updateBankCheckCorrectness = (id, data, onSuccess) => dispatch => {
         .update(id, data)
         .then(response => {
             dispatch({
-                type: ACTION_TYPES.UPDATE,
+                type: UPDATE_BANK_CHECK,
                 payload: {id, ...data}
             })
             onSuccess();

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, CardImg, Container, Row, Col } from 'react-bootstrap';
-import city from '../../city.jpg';
+import office from '../../tax-office.jpg';
 
 const Function = () => {
     return (
@@ -8,7 +8,7 @@ const Function = () => {
             <Row>
                 <Col>
                     <Card style={{width: '18rem'}}>
-                        <CardImg variant="top" src={city} />
+                        <CardImg variant="top" src={office} />
                         <Card.Body>
                             <Card.Title>Wan't</Card.Title>
                             <Card.Text>
@@ -20,7 +20,7 @@ const Function = () => {
                 </Col>
                 <Col>
                     <Card style={{width: '18rem'}}>
-                        <CardImg variant="top" src={city} />
+                        <CardImg variant="top" src={office} />
                         <Card.Body>
                             <Card.Title>Why</Card.Title>
                             <Card.Text>
@@ -32,7 +32,7 @@ const Function = () => {
                 </Col>
                 <Col>
                     <Card style={{width: '18rem'}}>
-                        <CardImg variant="top" src={city} />
+                        <CardImg variant="top" src={office} />
                         <Card.Body>
                             <Card.Title>Where</Card.Title>
                             <Card.Text>

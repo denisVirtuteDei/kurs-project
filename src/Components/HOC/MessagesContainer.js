@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import { fetchAllBankChecks, updateBankCheckCorrectness } from '../../Redux/Actions/BankCheckInfoAction'
-import { fetchAllDeclaration, updateDeclarationCorrectness } from '../../Redux/Actions/DeclarationAction'
+import { fetchChecks, updateBankCheckCorrectness } from '../../Redux/Actions/BankCheckInfoAction'
+import { fetchTaxes, updateDeclarationCorrectness } from '../../Redux/Actions/DeclarationAction'
 import Messages from '../Employees/Messages';
 
 const mapStateToProps = (state) => {
@@ -11,8 +11,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = ({
-    fetchAllBankChecks: fetchAllBankChecks,
-    fetchAllDeclaration: fetchAllBankChecks,
+    fetchChecks: fetchChecks,
+    fetchTaxes: fetchTaxes,
     updateCheckCorrectness: updateBankCheckCorrectness,
     updateDeclarationCorrectness: updateDeclarationCorrectness
 })

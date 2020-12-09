@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Image } from 'react-bootstrap';
+import stonks from '../../stonks.jpg'
 // import styled from 'styled-components'
 // import { store } from '../Redux/Stores/Store.js'
 // import { Provider } from 'react-redux'
@@ -19,8 +20,7 @@ import { Container } from 'react-bootstrap';
 
 const About = () => {
   return (
-    <Container>
-
+    <Container style={{minHeight: '550px', textAlign: 'center', padding: '10px'}}>
     </Container>
   )
 };

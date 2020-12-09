@@ -1,20 +1,20 @@
 import React from 'react';
 import { Jumbotron as Jumbo, Container } from 'react-bootstrap'
-import city from '../../city.jpg';
+import stonks from '../../maxresdefault.jpg';
 import styled from 'styled-components'
 
 const Styles = styled.div`
          .jumbo {
-            background: url(${city}) no-repeat fixed bottom;
+            background: url(${stonks}) no-repeat fixed bottom;
             backgound-size: cover;
             color: #efefef;
-            hieght: 400px;
+            height: 250px;
             position relative;
             z-index -2;
         }
         .overlay {
             background-color: #000;
-            opacity: 0.7;
+            opacity: 0.6;
             position: absolute;
             top: 0;
             left: 0;
@@ -27,13 +27,14 @@ const Styles = styled.div`
 const Jumbotron = () => (
     <Styles>
         <Jumbo fluid className="jumbo">
-            <div className="overlay"></div>
+            <div className="overlay"/>
             <Container>
-                <h1>Web Developer Blog</h1>
+                <h1>
+                    Кто-то
+                </h1>
                 <p>
-                    Налоговая представляет собой какую-то фигню
-                    И не спрашивайте что и зачем. Спасибо.
-            </p>
+                    Неизбежны только смерть и налоги
+                </p>
             </Container>
         </Jumbo>
     </Styles>

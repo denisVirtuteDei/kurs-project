@@ -29,29 +29,50 @@ const useRowStyles = makeStyles((theme) => ({
     },
 }));
 
-Row.propTypes = {
-    row: PropTypes.shape({
-        calories: PropTypes.number.isRequired,
-        carbs: PropTypes.number.isRequired,
-        fat: PropTypes.number.isRequired,
-        history: PropTypes.arrayOf(
-            PropTypes.shape({
-                amount: PropTypes.number.isRequired,
-                customerId: PropTypes.string.isRequired,
-                date: PropTypes.string.isRequired,
-            })
-        ).isRequired,
-        name: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        protein: PropTypes.number.isRequired,
-    }).isRequired,
-};
-
+// Row.propTypes = {
+//     row: PropTypes.shape({
+//         calories: PropTypes.number.isRequired,
+//         carbs: PropTypes.number.isRequired,
+//         fat: PropTypes.number.isRequired,
+//         history: PropTypes.arrayOf(
+//             PropTypes.shape({
+//                 amount: PropTypes.number.isRequired,
+//                 customerId: PropTypes.string.isRequired,
+//                 date: PropTypes.string.isRequired,
+//             })
+//         ).isRequired,
+//         name: PropTypes.string.isRequired,
+//         price: PropTypes.number.isRequired,
+//         protein: PropTypes.number.isRequired,
+//     }).isRequired,
+// };
 
 export default function Row(props) {
-    const { row } = props;
+    const row = props.row;
     const [open, setOpen] = React.useState(false);
+    const [buttonActive, setActive] = React.useState(row.data.isCorrect);
     const classes = useRowStyles();
+
+    const enable = () => {
+        setActive(true);
+        let data = {
+            ...row.data,
+            isCorrect: true
+        }
+        row.func(data.id, data, () => props.toUpdate())
+    }
+    const disable = () => {
+        setActive(false);
+        let data = {
+            ...row.data,
+            isCorrect: false
+        }
+        row.func(data.id, data, () => props.toUpdate())
+    }
+
+    // React.useEffect(() => {
+        
+    // }, [])
 
     return (
         <React.Fragment>
@@ -66,9 +87,9 @@ export default function Row(props) {
                     </IconButton>
                 </TableCell>
                 <TableCell component="th" scope="row" align="center">
-                    {row.name}
+                    {row.unp}
                 </TableCell>
-                <TableCell align="center">{row.calories}</TableCell>
+                <TableCell align="center">{row.fio}</TableCell>
             </TableRow>
             <TableRow>
                 <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -78,30 +99,68 @@ export default function Row(props) {
                                 {row.type}
                             </Typography>
                             <Table size="small" aria-label="purchases">
+                                <TableHead>
+                                    {
+                                        row.type === 'Check' ?
+                                            (
+                                                <TableRow key={row.Id}>
+                                                    <TableCell component="th" scope="row" align="right">
+                                                        Check title
+                                                    </TableCell>
+                                                    <TableCell align="right">Final sum</TableCell>
+                                                    <TableCell align="right">Payed date</TableCell>
+                                                    <TableCell align="right">isDebtRepament</TableCell>
+                                                    <TableCell align="right" >isCorrect</TableCell>
+                                                </TableRow>
+                                            ) :
+                                            (
+                                                <TableRow key={row.Id}>
+                                                    <TableCell component="th" scope="row" align="right">
+                                                        Check title
+                                                    </TableCell>
+                                                    <TableCell align="right">NCEA</TableCell>
+                                                    <TableCell align="right">Tax amount</TableCell>
+                                                    <TableCell align="right">isCorrect</TableCell>
+                                                </TableRow>
+                                            )
+                                    }
+                                </TableHead>
                                 <TableBody>
-                                    {row.history.map((historyRow) => (
-                                        <TableRow key={historyRow.date}>
-                                            <TableCell component="th" scope="row">
-                                                {historyRow.date}
-                                            </TableCell>
-                                            <TableCell>{historyRow.customerId}</TableCell>
-                                            <TableCell align="right">{historyRow.amount}</TableCell>
-                                            <TableCell align="right">
-                                                {Math.round(historyRow.amount * row.price * 100) / 100}
-                                            </TableCell>
-                                        </TableRow>
-                                    ))}
+                                    {
+                                        row.type === 'Check' ?
+                                            (
+                                                <TableRow key={row.Id} >
+                                                    <TableCell component="th" scope="row" align="right">
+                                                        {row.data.title}
+                                                    </TableCell>
+                                                    <TableCell align="right">{row.data.finalSum}</TableCell>
+                                                    <TableCell align="right">{row.data.payedDate}</TableCell>
+                                                    <TableCell align="right">{row.data.isDebtRep ? 'true' : 'false'}</TableCell>
+                                                    <TableCell align="right">{row.data.isCorrect ? 'true' : 'false'}</TableCell>
+                                                </TableRow>
+                                            ) :
+                                            (
+                                                <TableRow key={row.Id}>
+                                                    <TableCell component="th" scope="row" align="right">
+                                                        {row.title}
+                                                    </TableCell>
+                                                    <TableCell align="right">{row.data.fkNcea}</TableCell>
+                                                    <TableCell align="right">{row.data.taxAmount}</TableCell>
+                                                    <TableCell align="right">{row.data.isCorrect ? 'true' : 'false'}</TableCell>
+                                                </TableRow>
+                                            )
+                                    }
                                 </TableBody>
                             </Table>
 
                             <Grid container spacing={2} >
                                 <Grid item className={classes.buttonItem}>
-                                    <Button variant="success">
+                                    <Button variant="success" disabled={buttonActive} onClick={enable}>
                                         <CheckIcon />
                                     </Button>
                                 </Grid>
                                 <Grid item className={classes.buttonItem}>
-                                    <Button variant="danger">
+                                    <Button variant="danger" onClick={disable}>
                                         <CloseIcon />
                                     </Button>
                                 </Grid>

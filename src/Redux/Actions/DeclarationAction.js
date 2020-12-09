@@ -1,20 +1,40 @@
 import api from './Api';
-import { CREATE_DECLARATION, UPDATE_DECLARATION, ACTION_TYPES } from '../Constants/Types';
+import { 
+    CREATE_DECLARATION, 
+    UPDATE_DECLARATION, 
+    FETCH_PERSONS_DECLARATIONS,
+} from '../Constants/Types';
 
-const baseUrl = 'https://localhost:44383/api/PayedTaxes';
+const baseUrl = 'https://localhost:44383/api/PayedTaxes/';
 
-export const fetchAllDeclaration = () => dispatch => {
+export const fetchTaxes = (deadline) => dispatch => {
+    let dateTemplate = require('date-template');
+    let date = dateTemplate('%Y-%M-%D', deadline);
+
     api
-        .crudApi(baseUrl)
+        .crudApi(baseUrl+`${date}/`)
         .fetchAll()
         .then(response => {
             dispatch({
-                type: ACTION_TYPES.FETCH_ALL,
+                type: FETCH_PERSONS_DECLARATIONS,
                 payload: response.data
             })
         })
         .catch(err => console.log(err))
 }
+
+// export const fetchAllDeclaration = () => dispatch => {
+//     api
+//         .crudApi(baseUrl)
+//         .fetchAll()
+//         .then(response => {
+//             dispatch({
+//                 type: ACTION_TYPES.FETCH_ALL,
+//                 payload: response.data
+//             })
+//         })
+//         .catch(err => console.log(err))
+// }
 
 export const createDeclaration = (data, onSuccess) => dispatch => {
     api
