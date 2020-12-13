@@ -54,20 +54,20 @@ export default function Row(props) {
     const classes = useRowStyles();
 
     const enable = () => {
-        setActive(true);
         let data = {
             ...row.data,
             isCorrect: true
         }
         row.func(data.id, data, () => props.toUpdate())
+        setActive(true);
     }
     const disable = () => {
-        setActive(false);
         let data = {
             ...row.data,
             isCorrect: false
         }
         row.func(data.id, data, () => props.toUpdate())
+        setActive(false);
     }
 
     // React.useEffect(() => {

@@ -51,9 +51,6 @@ export default function NaviBar() {
                   <Link to="/">Home</Link>
                 </Nav.Link>
                 <Nav.Link>
-                  <Link to="/users">Users</Link>
-                </Nav.Link>
-                <Nav.Link>
                   <Link to="/about">About</Link>
                 </Nav.Link>
               </Nav>
