@@ -56,6 +56,7 @@ export const NewDeclarationPart = (props) => {
   const [errors, setErrors] = useState({});
 
   const [values, setValues] = useState(initialFieldVales);
+  
   const handleChange = (event) => {
     const { name, value } = event.target;
     const fieldValue = { [name]: value }
@@ -147,9 +148,6 @@ export const NewDeclarationPart = (props) => {
               variant="outlined"
               value={values.taxAmount}
               onChange={handleChange}
-              InputLabelProps={{
-                shrink: true,
-              }}
               {...(errors.taxAmount && { error: true, helperText: errors.taxAmount })}
             />
           </Grid>

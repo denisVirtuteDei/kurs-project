@@ -11,7 +11,7 @@ import { NavLink } from "react-router-dom";
 
 export default function LeftToolBar(props) {
     return (
-        <div style={{ width: 250 }} >
+        <div style={{ width: 230 }} >
             <Toolbar />
             <List>
                 {

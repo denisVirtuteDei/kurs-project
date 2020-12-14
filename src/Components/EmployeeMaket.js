@@ -28,20 +28,17 @@ const sidebarUrls = [
 
 export const EmployeeMaket = () => {
     return (
-        <Container fluid="true">
-            <Grid container spacing={2}>
-                <Grid className="justify-content-md-left" item xs={2}>
-                    <LeftToolBar sidebarUrls={sidebarUrls} />
-                </Grid>
-                <Grid item xs={10}>
-                    <Switch>
-                        <Route exact path="/employees/messages" component={MessagesContainer} />
-                        <Route exact path="/employees/registration" component={RegContainer} />
-                        {/* <Route exact path="/employees/dep_org" component={} /> */}
-                        <Route exact path="/employees/debtors_info" component={EntityContainer} />
-                    </Switch>
-                </Grid>
+        <Grid container spacing={2} style={{width: "100%"}}>
+            <Grid className="justify-content-md-left" item xs={2}>
+                <LeftToolBar sidebarUrls={sidebarUrls} />
             </Grid>
-        </Container>
+            <Grid item xs={10}>
+                <Switch>
+                    <Route exact path="/employees/messages" component={MessagesContainer} />
+                    <Route exact path="/employees/registration" component={RegContainer} />
+                    <Route exact path="/employees/debtors_info" component={EntityContainer} />
+                </Switch>
+            </Grid>
+        </Grid>
     )
 }

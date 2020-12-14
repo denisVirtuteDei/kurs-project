@@ -19,6 +19,7 @@ import NavbarToggle from "react-bootstrap/esm/NavbarToggle";
 import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
 import ModalHeader from "react-bootstrap/esm/ModalHeader";
+import AuthMenus from "../HOC/AuthMenus"
 
 const Styles = styled.div`
   a,
@@ -55,12 +56,7 @@ export default function NaviBar() {
                 </Nav.Link>
               </Nav>
               <Nav>
-                <Button variant="primary" className="mr-2" onClick={handleShow} >
-                  Log In
-                </Button>
-                <Button variant="primary" onClick={handleClose}>
-                  Sign Out
-                </Button>
+                <AuthMenus/>
               </Nav>
             </NavbarCollapse>
           </Container>

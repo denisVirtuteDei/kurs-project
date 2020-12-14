@@ -23,7 +23,7 @@ class Messages extends React.Component {
     super(props);
 
     const date = new Date();
-    date.setMonth(date.getMonth() - 2);
+    date.setMonth(date.getMonth() - 1);
 
     this.rows = [];
     this.page = 0;
@@ -84,10 +84,6 @@ class Messages extends React.Component {
     console.log(this.rows);
   }
 
-  updateButClick = () => {
-    this.update();
-  }
-
   handleDateChange = (date) => {
     this.selectedDate = date;
     this.update();
@@ -121,7 +117,7 @@ class Messages extends React.Component {
                       value={this.selectedDate}
                       onChange={this.handleDateChange}
                     />
-                    <Button color="primary" style={{margin: "5px"}} onClick={this.updateButClick}>Update</Button>
+                    <Button color="primary" style={{margin: "5px"}} onClick={this.update}>Update</Button>
                   </Grid>
                 </MuiPickersUtilsProvider>
                 <TableCell align="center">------UNP------</TableCell>

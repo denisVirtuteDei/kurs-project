@@ -1,15 +1,24 @@
-import { FETCH_ALL_ENTITIES } from '../Constants/Types';
+import { CREATE_ENTITY } from '../Constants/Types';
 
 const initialState = {
+    person: {
+        unp: '',
+        title: '',
+        fio: '',
+        passportNumber: '',
+        orgAddress: '',
+        telephone: ''
+    },
     data: []
 }
 
 export const entityReducer = (state = initialState, action) => {
     switch (action.type) {
-        case FETCH_ALL_ENTITIES:
+        case CREATE_ENTITY:
             return {
                 ...state,
-                data: [...action.payload]
+                person: {...state.person},
+                data: {...action.payload}
             };
         default:
             return state;

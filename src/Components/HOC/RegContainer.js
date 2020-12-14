@@ -1,16 +1,19 @@
 import { connect } from 'react-redux'
-import { fetchChecks, updateBankCheckCorrectness } from '../../Redux/Actions/BankCheckInfoAction'
-import { fetchTaxes, updateDeclarationCorrectness } from '../../Redux/Actions/DeclarationAction'
+import { createEntity } from '../../Redux/Actions/EntityPersonsAction'
+import { fetchAllNceaInfo } from '../../Redux/Actions/NceaInfoAction'
 import Registration from '../Employees/Registration';
 
 const mapStateToProps = (state) => {
     return {
-        
+        data: state.entityPersons.data,
+        person: state.entityPersons.person,
+        nceaInfoList: state.ncea.data,
     };
 };
 
 const mapDispatchToProps = ({
-    
+    createEntity: createEntity,
+    fetchAllNceaInfo: fetchAllNceaInfo,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Registration);

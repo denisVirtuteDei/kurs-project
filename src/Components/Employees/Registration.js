@@ -1,22 +1,21 @@
 import React from "react";
 import { Container, Form, Tabs, Tab } from "react-bootstrap";
 import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
 import EntityRegPart from './Reg/EntityRegPart'
 import IndividRegPart from './Reg/IndividRegPart'
 import SelfRegPart from './Reg/SelfRegPart'
 
-const Registration = () => {
-
-  const enterClick = () => {
-    if (key.includes('f'))
-      console.log('f');
-    if (key.includes('s'))
-      console.log('s');
-    if (key.includes('t'))
-      console.log('t');
-
+function generatePassword() {
+  var length = 5,
+    charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+    retVal = "";
+  for (var i = 0, n = charset.length; i < length; ++i) {
+    retVal += charset.charAt(Math.floor(Math.random() * n));
   }
+  return retVal;
+}
+
+const Registration = (props) => {
 
   const [key, setKey] = React.useState('f');
 
@@ -29,16 +28,16 @@ const Registration = () => {
         onSelect={(k) => setKey(k)}
       >
         <Tab eventKey="f" title="Entity">
-          <EntityRegPart />
+          <EntityRegPart createEntity={props.createEntity} generatePassword={generatePassword} />
         </Tab>
         <Tab eventKey="s" title="Self">
-          <SelfRegPart />
+          <SelfRegPart  generatePassword={generatePassword} />
         </Tab>
         <Tab eventKey="t" title="Individ">
           <IndividRegPart />
         </Tab>
       </Tabs>
-      <Button color="primary" variant="contained" style={{ float: "right", margin: "15px" }} onClick={enterClick}>enter</Button>
+      
     </Container>
   );
 }

@@ -1,17 +1,18 @@
 import api from './Api';
-import { FETCH_ALL_ENTITIES } from '../Constants/Types';
+import { CREATE_ENTITY } from '../Constants/Types';
 
-const baseUrl = 'https://localhost:44383/api/Entities';
+//const baseUrl = 'https://localhost:44383/api/Entities';
 
-export const fetchAllEntityPersons = () => dispatch => {
+export const createEntity = (data, onSuccess) => dispatch => {
     api
-        .crudApi(baseUrl)
-        .fetchAll()
+        .crudApi()
+        .create(data)
         .then(response => {
             dispatch({
-                type: FETCH_ALL_ENTITIES,
+                type: CREATE_ENTITY,
                 payload: response.data
             })
+            onSuccess();
         })
         .catch(err => console.log(err))
 }

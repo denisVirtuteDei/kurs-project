@@ -26,7 +26,7 @@ const sidebarUrls = [
 export const TaxpayersMaket = () => {
     return (
         <Container fluid="true">
-            <Grid container spacing={2}>
+            <Grid container spacing={2} style={{width: "100%"}}>
                 <Grid className="justify-content-md-left" item xs={2}>
                     <LeftToolBar sidebarUrls={sidebarUrls}/>
                 </Grid>

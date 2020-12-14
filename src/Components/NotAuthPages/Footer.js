@@ -7,7 +7,7 @@ import Divider from "@material-ui/core/Divider";
 
 const Footer = () => (
     <div style={{
-        maxWidth: 700,
+        maxWidth: 600,
         margin: "auto",
         textAlign: "center",
         flexShrink: 0,
@@ -15,7 +15,7 @@ const Footer = () => (
         <Typography variant="caption" align={"center"}>
             © Copyright 2021
         </Typography>
-        <Divider style={{ margin: "22px auto", width: 60 }} />
+        <Divider style={{ margin: "15px auto", width: 60 }} />
         <Grid container justify={"center"} spacing={2}>
             <Grid item xs={12} sm={6} md={3}>
                 <Typography align={"center"} gutterBottom color={"textSecondary"}>
