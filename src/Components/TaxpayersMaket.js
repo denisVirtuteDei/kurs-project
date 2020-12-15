@@ -10,15 +10,15 @@ import NewDeclarationContainer from "./HOC/NewDeclarationContainer";
 const sidebarUrls = [
     {
         title: 'New declarations',
-        url: '/taxpayers/declarations'
+        url: '/im/taxpayers/declarations'
     },
     {
         title: 'New checks',
-        url: '/taxpayers/checks'
+        url: '/im/taxpayers/checks'
     },
     {
         title: 'Debt info',
-        url: '/taxpayers/debt_info'
+        url: '/im/taxpayers/debt_info'
     }
 ]
 
@@ -32,9 +32,9 @@ export const TaxpayersMaket = () => {
                 </Grid>
                 <Grid item xs={10}>
                     <Switch>
-                        <Route exact path="/taxpayers/declarations" component={NewDeclarationContainer} />
-                        <Route exact path="/taxpayers/checks" component={NewCheckContainer} />
-                        <Route exact path="/taxpayers/debt_info" component={DebtInfoContainer} />
+                        <Route exact path="/im/taxpayers/declarations" component={NewDeclarationContainer} />
+                        <Route exact path="/im/taxpayers/checks" component={NewCheckContainer} />
+                        <Route exact path="/im/taxpayers/debt_info" component={DebtInfoContainer} />
                     </Switch>
                 </Grid>
             </Grid>

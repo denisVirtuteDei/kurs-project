@@ -2,15 +2,16 @@ import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import NaviBar from "./Components/NotAuthPages/Navibar";
 import Footer from "./Components/NotAuthPages/Footer";
 import Home from './Components/NotAuthPages/Home';
 import About from './Components/NotAuthPages/About';
-import Cabinet from "./Components/Cabinet";
+import NaviBar from "./Components/NotAuthPages/Navibar";
 import { Provider } from "react-redux";
 import { store } from './Redux/Stores/Store.js'
 import { TaxpayersMaket } from "./Components/TaxpayersMaket";
-import { EmployeeMaket } from "./Components/EmployeeMaket";
+import EmployeeMaket from "./Components/EmployeeMaket";
+import UserCabinetContainer from "./Components/HOC/UserCabinetContainer";
+
 
 const App = () => {
   return (
@@ -20,9 +21,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
-          <Route exact path="/cabinet" component={Cabinet} />
-          <Route path="/employees" component={EmployeeMaket} />
-          <Route path="/taxpayers" component={TaxpayersMaket} />
+          <Route path="/im/:currentUserAccessLevel" component={UserCabinetContainer} />
         </Switch>
         <Footer />
       </Provider>

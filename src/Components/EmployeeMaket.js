@@ -10,35 +10,37 @@ import RegContainer from './HOC/RegContainer';
 const sidebarUrls = [
     {
         title: 'Messages',
-        url: '/employees/messages'
+        url: '/im/employees/messages'
     },
     {
         title: 'Registration',
-        url: '/employees/registration'
+        url: '/im/employees/registration'
     },
     {
         title: 'Departure organization',
-        url: '/employees/checks'
+        url: '/im/employees/checks'
     },
     {
         title: 'Debtors info',
-        url: '/employees/debtor_info'
+        url: '/im/employees/debtor_info'
     }
 ]
 
-export const EmployeeMaket = () => {
+const EmployeeMaket = (props) => {
     return (
-        <Grid container spacing={2} style={{width: "100%"}}>
+        <Grid container spacing={2} style={{ width: "100%" }}>
             <Grid className="justify-content-md-left" item xs={2}>
                 <LeftToolBar sidebarUrls={sidebarUrls} />
             </Grid>
             <Grid item xs={10}>
                 <Switch>
-                    <Route exact path="/employees/messages" component={MessagesContainer} />
-                    <Route exact path="/employees/registration" component={RegContainer} />
-                    <Route exact path="/employees/debtors_info" component={EntityContainer} />
+                    <Route path="/im/employees/messages" component={MessagesContainer} />
+                    <Route path="/im/employees/registration" component={RegContainer} />
+                    <Route path="/im/employees/debtors_info" component={EntityContainer} />
                 </Switch>
             </Grid>
         </Grid>
     )
 }
+
+export default EmployeeMaket;

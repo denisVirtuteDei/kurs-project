@@ -13,8 +13,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 const EntityRegPart = (props) => {
 
   const enterClick = () => {
-
-
     const registration = {
       id: 0,
       fkPerson: 0,
