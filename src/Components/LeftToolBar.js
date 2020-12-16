@@ -25,15 +25,6 @@ export default function LeftToolBar(props) {
                     ))
                 }
             </List>
-            <Divider />
-            <List>
-                {['Memes gato', 'Memes basura', 'Memes de gachi'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 1 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
         </div>
     );
 }

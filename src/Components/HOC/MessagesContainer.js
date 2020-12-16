@@ -11,10 +11,10 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = ({
-    fetchChecks: fetchChecks,
-    fetchTaxes: fetchTaxes,
-    updateCheckCorrectness: updateBankCheckCorrectness,
-    updateDeclarationCorrectness: updateDeclarationCorrectness
+    fetchChecks,
+    fetchTaxes,
+    updateDeclarationCorrectness,
+    updateCheckCorrectness: updateBankCheckCorrectness
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Messages);

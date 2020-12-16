@@ -8,8 +8,8 @@ import About from './Components/NotAuthPages/About';
 import NaviBar from "./Components/NotAuthPages/Navibar";
 import { Provider } from "react-redux";
 import { store } from './Redux/Stores/Store.js'
-import { TaxpayersMaket } from "./Components/TaxpayersMaket";
-import EmployeeMaket from "./Components/EmployeeMaket";
+import { TaxpayersMaket } from "./Components/TaxpayersLayout";
+import EmployeeMaket from "./Components/EmployeeLayout";
 import UserCabinetContainer from "./Components/HOC/UserCabinetContainer";
 
 
