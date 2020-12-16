@@ -1,14 +1,15 @@
 import api from './Api';
-import { 
+import {
     CREATE_BANK_CHECK,
     UPDATE_BANK_CHECK,
     FETCH_PERSONS_CHECKS,
-    FETCH_BY_ID_BANK_CHECK, 
+    FETCH_BY_ID_BANK_CHECK,
 } from '../Constants/Types';
 
 const fetchByIdUrl = 'https://localhost:44383/api/BankCheckInfo/';
 const fetchChecksUrl = 'https://localhost:44383/api/PersonsChecksInfo/';
 const bankCheckUrl = 'https://localhost:44383/api/BankCheck/';
+
 
 //fetch all b/c with persons info
 export const fetchChecks = (deadline) => dispatch => {
@@ -16,7 +17,7 @@ export const fetchChecks = (deadline) => dispatch => {
     let date = dateTemplate('%Y-%M-%D', deadline);
 
     api
-        .crudApi(fetchChecksUrl+`${date}/`)
+        .crudApi(fetchChecksUrl + `${date}/`)
         .fetchAll()
         .then(response => {
             dispatch({
@@ -73,7 +74,7 @@ export const updateBankCheckCorrectness = (id, data, onSuccess) => dispatch => {
         .then(response => {
             dispatch({
                 type: UPDATE_BANK_CHECK,
-                payload: {id, ...data}
+                payload: { id, ...data }
             })
             onSuccess();
         })

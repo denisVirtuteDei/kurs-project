@@ -1,13 +1,15 @@
 import axios from 'axios';
 
+const config = ({ headers: { Authorization: `Bearer ${true && window.sessionStorage.getItem('access_token')}` } })
+
 const obj = {
     crudApi(url = ('')) {
-        return url==='' ? {} : {
-            fetchAll: () => axios.get(url),
-            fetchById: id => axios.get(url + id),
-            create: newRecord => axios.post(url, newRecord),
-            update: (id, updateRecord) => axios.put(url + id, updateRecord),
-            delete: id => axios.delete(url + id)
+        return url === '' ? {} : {
+            fetchAll: () => axios.get(url, config),
+            fetchById: id => axios.get(url + id, config),
+            create: newRecord => axios.post(url, newRecord, config),
+            update: (id, updateRecord) => axios.put(url + id, updateRecord, config),
+            delete: id => axios.delete(url + id, config)
         }
     }
 };

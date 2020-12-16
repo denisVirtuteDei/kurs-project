@@ -1,34 +1,25 @@
-//import { ACTION_TYPES } from '../Actions/Api'
-const GET_USER_AUTH = "GET_USER_AUTH"
-const SET_ACCESS_LEVEL = "SET_ACCESS_LEVEL"
+import { GET_AUTH_TOKEN, SIGN_OUT } from '../Constants/Types'
 
 const initialState = {
-    currentUserName: "Denis",
-    currentUserId: 0,
-    currentUserAccessLevel: 'anon'
+    username: '',
+    priority: 'anon'
 }
 
 export const authReducer = (state = initialState, action) => {
-
     switch (action.type) {
-        case GET_USER_AUTH:
-            return {
-                ...state
-            }
-        case SET_ACCESS_LEVEL:
+        case GET_AUTH_TOKEN:
             return {
                 ...state,
-                currentUserAccessLevel: action.accessLevel
+                ...action.payload,
+            }
+        case SIGN_OUT:
+            window.sessionStorage.removeItem('access_token');
+            return {
+                ...state,
+                ...initialState
             }
         default:
-            return { ...state }
+            return state
     }
-}
-
-export const setAccessLevel = (lvl) => dispatch => {
-    dispatch({
-        type: SET_ACCESS_LEVEL,
-        accessLevel: lvl
-    })
 }
 

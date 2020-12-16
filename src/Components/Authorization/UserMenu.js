@@ -46,6 +46,19 @@ const UserMenu = (props) => {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
+    const getPrior = (prior) => {
+        switch (prior) {
+            case 'ceo':
+                return 'employees';
+            case 'employee':
+                return 'employees';
+            case 'user':
+                return 'taxpayers';        
+            default:
+                return prior
+        }
+    }
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -63,7 +76,7 @@ const UserMenu = (props) => {
                 color="primary"
                 onClick={handleClick}
             >
-                {props.authInfo.currentUserName}
+                {props.authInfo.username}
             </Button>
             <StyledMenu
                 id="customized-menu"
@@ -72,7 +85,8 @@ const UserMenu = (props) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <NavLink to={'/im/' + props.authInfo.currentUserAccessLevel} style={{ textDecoration: "none", color: "black" }}>
+                <NavLink to={'/im/' + getPrior(props.authInfo.priority)}
+                    style={{ textDecoration: "none", color: "black" }}>
                     <StyledMenuItem onClick={handleClose}>
                         <ListItemIcon>
                             <SendIcon fontSize="small" />
@@ -81,7 +95,7 @@ const UserMenu = (props) => {
                     </StyledMenuItem>
                 </NavLink>
                 <NavLink to='/' style={{ textDecoration: "none", color: "black" }}>
-                    <StyledMenuItem onClick={() => { handleClose(); props.setAccessLevel('anon')}}>
+                    <StyledMenuItem onClick={() => { handleClose(); props.singOut() }}>
                         <ListItemIcon>
                             <DraftsIcon fontSize="small" />
                         </ListItemIcon>

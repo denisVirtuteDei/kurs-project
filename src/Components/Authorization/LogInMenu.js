@@ -51,12 +51,15 @@ const StyledMenuItem = withStyles((theme) => ({
 const LogInMenu = (props) => {
 
     const [show, setShow] = useState(false);
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
-    const handleClose = () => {
-        props.setAccessLevel('employees');
-        setShow(false);
-    }
+    const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const loginClick = () => {
+        if(username && password)
+            props.getAuthToken(username, password);
+    }
 
 
     return (
@@ -80,20 +83,18 @@ const LogInMenu = (props) => {
                     <form>
                         <FormGroup controlId="formBasicEmail">
                             <FormLabel>Email Address</FormLabel>
-                            <FormControl type="emali" placeholder="Enter email" />
+                            <FormControl type="email" placeholder="Enter email" onChange={(e) => setUsername(e.target.value)} />
                             <FormText className="text-muted">
                                 We'll never share your email
                             </FormText>
                         </FormGroup>
-                        <FormGroup controlId="formBasicPassword">
+                        <FormGroup controlId="formBasicPassword" >
                             <FormLabel>Password</FormLabel>
-                            <FormControl type="password" placeholder="Enter password" />
+                            <FormControl type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)} />
                         </FormGroup>
                         <FormGroup controlId="formBasicCheckbox">
                             <FormCheck type="checkbox" label="Remember me" />
-                            <NavLink to={'/im/' + 'employees'}>
-                                <Button onClick={handleClose}>Войти</Button>
-                            </NavLink>
+                            <Button onClick={loginClick}>Войти</Button>
                         </FormGroup>
                     </form>
                 </ModalBody>

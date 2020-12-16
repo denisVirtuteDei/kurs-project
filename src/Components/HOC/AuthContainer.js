@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import AuthMenuLogic from '../Authorization/AuthMenuLogic'
-import { setAccessLevel } from '../../Redux/Reducers/AuthReducer'
+import { getAuthToken, singOut } from '../../Redux/Actions/AuthAction'
 
 const mapStateToProps = (state) => {
     return {
@@ -9,7 +9,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = ({
-    setAccessLevel
+    getAuthToken,
+    singOut
 })
 
 

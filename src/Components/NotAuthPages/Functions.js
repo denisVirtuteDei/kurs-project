@@ -14,7 +14,7 @@ const Function = () => {
                             <Card.Text>
                                 To do nothing?.
                         </Card.Text>
-                            <button variant="primary">Learn more</button>
+                            <button variant="primary">Execute</button>
                         </Card.Body>
                     </Card>
                 </Col>
@@ -26,7 +26,7 @@ const Function = () => {
                             <Card.Text>
                                 Do nothing?
                         </Card.Text>
-                            <button variant="primary">Learn more</button>
+                            <button variant="primary">Execute</button>
                         </Card.Body>
                     </Card>
                 </Col>
@@ -38,7 +38,7 @@ const Function = () => {
                             <Card.Text>
                                 To do nothing?
                         </Card.Text>
-                            <button variant="primary">Learn more</button>
+                            <button variant="primary">Execute</button>
                         </Card.Body>
                     </Card>
                 </Col>
