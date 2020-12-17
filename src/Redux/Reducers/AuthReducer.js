@@ -1,6 +1,7 @@
 import { GET_AUTH_TOKEN, SIGN_OUT } from '../Constants/Types'
 
 const initialState = {
+    access_token: null,
     username: '',
     priority: 'anon'
 }
@@ -13,6 +14,7 @@ export const authReducer = (state = initialState, action) => {
                 ...action.payload,
             }
         case SIGN_OUT:
+
             window.sessionStorage.removeItem('access_token');
             return {
                 ...state,

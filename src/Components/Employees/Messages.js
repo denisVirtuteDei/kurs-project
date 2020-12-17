@@ -21,14 +21,20 @@ class Messages extends React.Component {
 
   constructor(props) {
     super(props);
-
     const date = new Date();
     date.setMonth(date.getMonth() - 1);
 
-    this.rows = [];
-    this.page = 0;
-    this.rowsPerPage = 10;
-    this.selectedDate = date;
+    this.state = {
+      rows: [],
+      page: 0,
+      rowsPerPage: 10,
+      selectedDate: date
+    }
+
+    this.update = this.update.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
+    this.handleChangePage = this.handleChangePage.bind(this);
+    this.handleChangeRowsPerPage = this.handleChangeRowsPerPage.bind(this);
   }
 
   createChecks = (el, func) => ({
@@ -65,13 +71,7 @@ class Messages extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchTaxes(this.selectedDate);
-    this.props.fetchChecks(this.selectedDate);
-    let a = this.props.declarationList.map(el => this.createDeclaration(el, this.props.updateDeclarationCorrectness));
-    let b = this.props.checkList.map(el => this.createChecks(el, this.props.updateCheckCorrectness));
-
-    this.rows = Array.prototype.concat(a, b)
-    console.log(this.rows);
+    this.update();
   }
 
   update() {
@@ -80,23 +80,35 @@ class Messages extends React.Component {
     let a = this.props.declarationList.map(el => this.createDeclaration(el, this.props.updateDeclarationCorrectness));
     let b = this.props.checkList.map(el => this.createChecks(el, this.props.updateCheckCorrectness));
 
-    this.rows = Array.prototype.concat(a, b)
-    console.log(this.rows);
+    this.setState = {
+      ...this.state,
+      rows: { ...Array.prototype.concat(a, b) }
+    }
+    console.log(this.state.rows);
   }
 
   handleDateChange = (date) => {
-    this.selectedDate = date;
+    this.setState = {
+      ...this.state,
+      selectedDate: date
+    };
     this.update();
   };
 
   handleChangePage = (event, newPage) => {
-    this.page = newPage;
+    this.setState = {
+      ...this.state,
+      page: newPage
+    };
   };
 
   handleChangeRowsPerPage = (event) => {
-    this.rowsPerPage = parseInt(event.target.value, 10);
-    this.page = 0;
-  };
+    this.setState = {
+      ...this.state,
+      rowsPerPage: parseInt(event.target.value, 10),
+      page: 0
+    }
+  }
 
   render() {
     return (
@@ -114,10 +126,10 @@ class Messages extends React.Component {
                       format="dd/MM/yyyy"
                       margin="normal"
                       id="date-picker-inline"
-                      value={this.selectedDate}
+                      value={this.state.selectedDate}
                       onChange={this.handleDateChange}
                     />
-                    <Button color="primary" style={{margin: "5px"}} onClick={this.update}>Update</Button>
+                    <Button color="primary" style={{ margin: "5px" }} onClick={this.update}>Update</Button>
                   </Grid>
                 </MuiPickersUtilsProvider>
                 <TableCell align="center">------UNP------</TableCell>
@@ -126,9 +138,9 @@ class Messages extends React.Component {
             </TableHead>
             <TableBody>
               {
-                (this.rowsPerPage > 0
-                  ? this.rows.slice(this.page * this.rowsPerPage, this.page * this.rowsPerPage + this.rowsPerPage)
-                  : this.rows
+                (this.state.rowsPerPage > 0
+                  ? this.state.rows.slice(this.state.page * this.state.rowsPerPage, this.state.page * this.state.rowsPerPage + this.state.rowsPerPage)
+                  : this.state.rows
                 ).map((row, index) => (
                   <Row key={index} row={row} toUpdate={this.update} />
                 ))
@@ -138,9 +150,9 @@ class Messages extends React.Component {
         </TableContainer>
         <TablePagination
           rowsPerPageOptions={[10, 25]}
-          count={this.rows.length}
-          rowsPerPage={this.rowsPerPage}
-          page={this.page}
+          count={this.state.rows.length}
+          rowsPerPage={this.state.rowsPerPage}
+          page={this.state.page}
           onChangePage={this.handleChangePage}
           onChangeRowsPerPage={this.handleChangeRowsPerPage}
         />

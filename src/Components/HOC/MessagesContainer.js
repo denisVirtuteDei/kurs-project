@@ -4,6 +4,7 @@ import { fetchTaxes, updateDeclarationCorrectness } from '../../Redux/Actions/De
 import Messages from '../Employees/Messages';
 
 const mapStateToProps = (state) => {
+    debugger
     return {
         checkList: state.checkInfo.data,
         declarationList: state.declarations.data,
