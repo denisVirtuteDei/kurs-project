@@ -15,13 +15,13 @@ class UserCabinetContainer extends React.Component {
                         <>
                             <Switch>
                                 <Route path="/im/employees">
-                                    <EmployeeLayout {...this.props} />
+                                    <EmployeeLayout />
                                 </Route>
                                 <Route path="/im/taxpayers">
-                                    <TaxpayersMaket {...this.props} />
+                                    <TaxpayersMaket />
                                 </Route>
                                 <Route path="/im/admin">
-                                    <AdminLayout {...this.props} />
+                                    <AdminLayout />
                                 </Route>
                             </Switch>
                         </>
@@ -32,8 +32,6 @@ class UserCabinetContainer extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-
-});
+const mapStateToProps = (state) => ({});
 
 export default connect(mapStateToProps, {})(withRouter(UserCabinetContainer));

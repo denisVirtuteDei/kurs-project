@@ -4,7 +4,7 @@ import { NewCheckPart } from '../Taxpayers/NewCheckPart';
 
 const mapStateToProps = (state) => {
     return {
-        checkInfoList: state.checkInfo.data,
+        checkInfoList: state.checkInfo.backChecks,
     };
 };
 

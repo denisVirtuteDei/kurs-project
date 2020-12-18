@@ -13,5 +13,5 @@ export const UPDATE_DECLARATION = 'UPDATE_DECLARATION';
 
 export const DELETE_DECLARATION = 'DELETE_DECLARATION';
 
-export const GET_AUTH_TOKEN = "GET_AUTH_TOKEN"
-export const SIGN_OUT = "SIGN_OUT"
+export const GET_AUTH_TOKEN = 'GET_AUTH_TOKEN'
+export const SIGN_OUT = 'SIGN_OUT'

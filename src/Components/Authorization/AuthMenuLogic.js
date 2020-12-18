@@ -7,7 +7,7 @@ const AuthMenuLogic = (props) => {
   return (
     <div>
       {
-        props.authInfo.priority === 'anon' ? <LogInMenu {...props}/> : <UserMenu {...props} />
+        props.authInfo.access_token ? <UserMenu {...props} /> : <LogInMenu {...props} />
       }
     </div>
   );

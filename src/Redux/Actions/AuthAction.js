@@ -6,7 +6,6 @@ const authUrl = 'https://localhost:44383/token'
 export const getAuthToken = (username, password) => dispatch => {
     axios.post(authUrl, { username, password })
         .then(response => {
-            debugger;
             if (response.data.access_token) {
                 window.sessionStorage.setItem('access_token', response.data.access_token)
                 dispatch({

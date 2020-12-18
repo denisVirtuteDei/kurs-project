@@ -1,12 +1,12 @@
-import { 
-    FETCH_BY_ID_BANK_CHECK, 
+import {
     CREATE_BANK_CHECK,
-    FETCH_PERSONS_CHECKS,
     UPDATE_BANK_CHECK,
+    FETCH_PERSONS_CHECKS,
+    FETCH_BY_ID_BANK_CHECK, 
  } from '../Constants/Types';
 
 const initialState = {
-    data: []
+    backChecks: []
 }
 
 export const bankCheckInfoReducer = (state = initialState, action) => {
@@ -14,22 +14,22 @@ export const bankCheckInfoReducer = (state = initialState, action) => {
         case FETCH_PERSONS_CHECKS:
             return {
                 ...state,
-                data: [...action.payload]
+                backChecks: [...action.payload]
             };
         case FETCH_BY_ID_BANK_CHECK:
             return {
                 ...state,
-                data: [...action.payload]
+                backChecks: [...action.payload]
             };
         case CREATE_BANK_CHECK:
             return {
                 ...state,
-                data: [...state.data, action.payload]
+                backChecks: [...state.backChecks, action.payload]
             };
         case UPDATE_BANK_CHECK:
             return {
                 ...state,
-                data: state.data.map(x => x.id === action.payload.id ? action.payload : x)
+                backChecks: state.backChecks.map(x => x.id === action.payload.id ? action.payload : x)
             };
         default:
             return state;

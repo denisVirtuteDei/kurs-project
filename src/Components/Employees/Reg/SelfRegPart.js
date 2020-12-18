@@ -1,25 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Form } from "react-bootstrap";
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
 
 const SelfRegPart = (props) => {
 
   const enterClick = () => {
-    // const data = {
-    //   unp,
-    //   shortOrgTitle: title,
-    //   firstName: fio.split(' ')[0],
-    //   secondName: fio.split(' ')[1],
-    //   middleName: fio.split(' ')[2],
-    // }
+    const registration = {
+      id: 0,
+      fkPerson: 0,
+      ncea,
+      startDate
+    }
+
     if (endDate > startDate) {
       const password = props.generatePassword();
-      alert(password);
+
+      const self = {
+        unp,
+        shortOrgTitle: title,
+        firstName: fio.split(' ')[0],
+        secondName: fio.split(' ')[1],
+        middleName: fio.split(' ')[2],
+        passportNumber: number,
+        orgAddress,
+        telephone
+      }
+
+      console.log([self, registration, password]);
     }
   }
 
@@ -29,6 +44,7 @@ const SelfRegPart = (props) => {
   const [number, setNumber] = React.useState('');
   const [orgAddress, setOrgAddress] = React.useState('');
   const [telephone, setTelephone] = React.useState('');
+  const [ncea, setNcea] = React.useState('');
   const [startDate, setStartDate] = React.useState(new Date());
   const [endDate, setEndDate] = React.useState(new Date());
 
@@ -42,6 +58,9 @@ const SelfRegPart = (props) => {
     }
   }
 
+  useEffect(() => {
+    //props.fetchAllNceaInfo();
+  }, [])
 
   return (
     <Container>
@@ -109,44 +128,73 @@ const SelfRegPart = (props) => {
               onChange={(e) => setTelephone(e.target.value)}
               placeholder="Введите телефон" />
           </Form.Group>
-          <Grid container spacing={2} style={{ margin: "15px" }}>
+          <Form.Group controlId="formPlaintext7">
+            <Form.Label sm="6">ОКЭД</Form.Label>
+            <div>
+              <Select
+                labelId="select-outlined-label"
+                name="ncea"
+                id="select-outlined"
+                value={ncea}
+                onChange={(e) => setNcea(e.target.value)}
+                label="ОКЭД"
+                style={{
+                  width: "250px",
+                  marginTop: "10px"
+                }}
+              >
+                {
+                  props.nceaInfoList ?
+                    props.nceaInfoList.map((el) => {
+                      return (
+                        <MenuItem value={el.id}>{el.ncea}</MenuItem>
+                      )
+                    }) : <MenuItem value="1">None</MenuItem>
+                }
+              </Select>
+            </div>
+          </Form.Group>
+          <hr style={{ marginTop: "20px" }} />
+          <Grid container spacing={2} style={{ marginTop: "15px" }}>
             <Grid item xs={3}>
+              <Form.Label sm="6">Дата регистрации</Form.Label>
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <KeyboardDatePicker
                   disableToolbar
                   variant="inline"
                   format="dd/MM/yyyy"
                   margin="normal"
-                  id="date-picker-inline"
+                  id="inline-start-date"
                   value={startDate}
                   onChange={(date) => setStartDate(date)}
                 />
               </MuiPickersUtilsProvider>
             </Grid>
             <Grid item xs={3}>
+              <Form.Label sm="6">Зе енд</Form.Label>
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <KeyboardDatePicker
                   disableToolbar
                   variant="inline"
                   format="dd/MM/yyyy"
                   margin="normal"
-                  id="date-picker-inline"
+                  id="inline-end-date"
                   value={endDate}
                   onChange={(date) => setEndDate(date)}
                 />
               </MuiPickersUtilsProvider>
             </Grid>
-            <Grid item xs={5}>
-              <Button
-                color="primary"
-                variant="contained"
-                style={{ float: "right", margin: "15px" }}
-                onClick={enterClick}
-                size="large"
-              >
-                Registrate
+          </Grid>
+          <Grid item>
+            <Button
+              color="primary"
+              variant="contained"
+              style={{ float: "right", margin: "15px", marginBottom: "50px" }}
+              onClick={enterClick}
+              size="large"
+            >
+              Registrate
               </Button>
-            </Grid>
           </Grid>
         </Form>
       </div>

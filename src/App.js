@@ -21,7 +21,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
-          <Route path="/im/:currentUserAccessLevel" component={UserCabinetContainer} />
+          <Route path="/im/:priority" component={UserCabinetContainer} />
         </Switch>
         <Footer />
       </Provider>

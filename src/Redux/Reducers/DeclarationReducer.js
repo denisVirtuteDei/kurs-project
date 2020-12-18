@@ -2,11 +2,11 @@ import {
     CREATE_DECLARATION,
     UPDATE_DECLARATION, 
     DELETE_DECLARATION,
-    FETCH_PERSONS_DECLARATIONS, 
+    FETCH_PERSONS_DECLARATIONS,
 } from '../Constants/Types';
 
 const initialState = {
-    data: []
+    payedTaxes: []
 }
 
 export const declarationReducer = (state = initialState, action) => {
@@ -14,22 +14,22 @@ export const declarationReducer = (state = initialState, action) => {
         case FETCH_PERSONS_DECLARATIONS:
             return {
                 ...state,
-                data: action.payload
+                payedTaxes: action.payload
             };
         case CREATE_DECLARATION:
             return {
                 ...state,
-                data: [...state.data, action.payload]
+                payedTaxes: [...state.payedTaxes, action.payload]
             };
         case UPDATE_DECLARATION:
             return {
                 ...state,
-                data: state.data.map(x => x.id === action.payload.id ? action.payload : x)
+                payedTaxes: state.payedTaxes.map(x => x.id === action.payload.id ? action.payload : x)
             };
         case DELETE_DECLARATION:
             return {
                 ...state,
-                data: state.data.filter(x => x.id !== action.payload.id )
+                payedTaxes: state.payedTaxes.filter(x => x.id !== action.payload.id )
             };
         default:
             return state;

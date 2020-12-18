@@ -4,7 +4,6 @@ import { FETCH_ALL_NCEA } from '../Constants/Types';
 const baseUrl = 'https://localhost:44383/api/EconomicActivityTypes';
 
 export const fetchAllNceaInfo = () => dispatch => {
-    debugger
     api
         .crudApi(baseUrl)
         .fetchAll()

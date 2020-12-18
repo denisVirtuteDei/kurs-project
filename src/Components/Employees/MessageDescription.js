@@ -48,6 +48,7 @@ const useRowStyles = makeStyles((theme) => ({
 // };
 
 export default function Row(props) {
+    
     const row = props.row;
     const [open, setOpen] = React.useState(false);
     const [buttonActive, setActive] = React.useState(row.data.isCorrect);
@@ -58,7 +59,7 @@ export default function Row(props) {
             ...row.data,
             isCorrect: true
         }
-        row.func(data.id, data, () => props.toUpdate())
+        row.func(data.id, data, ()=>{})
         setActive(true);
     }
     const disable = () => {
@@ -66,7 +67,7 @@ export default function Row(props) {
             ...row.data,
             isCorrect: false
         }
-        row.func(data.id, data, () => props.toUpdate())
+        row.func(data.id, data, () => {})
         setActive(false);
     }
 

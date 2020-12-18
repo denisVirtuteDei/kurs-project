@@ -7,8 +7,7 @@ import { NewDeclarationPart } from '../Taxpayers/NewDeclarationPart';
 const mapStateToProps = (state) => {
     return {
         nceaInfoList: state.ncea.data,
-        checkInfoList: state.checkInfo.data,
-        
+        checkInfoList: state.checkInfo.backChecks,
     };
 };
 

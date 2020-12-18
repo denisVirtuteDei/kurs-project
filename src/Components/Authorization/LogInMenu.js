@@ -57,7 +57,7 @@ const LogInMenu = (props) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const loginClick = () => {
-        if(username && password)
+        if (username && password)
             props.getAuthToken(username, password);
     }
 

@@ -1,7 +1,7 @@
 import api from './Api';
-import { 
-    CREATE_DECLARATION, 
-    UPDATE_DECLARATION, 
+import {
+    CREATE_DECLARATION,
+    UPDATE_DECLARATION,
     FETCH_PERSONS_DECLARATIONS,
 } from '../Constants/Types';
 
@@ -10,9 +10,9 @@ const baseUrl = 'https://localhost:44383/api/PayedTaxes/';
 export const fetchTaxes = (deadline) => dispatch => {
     let dateTemplate = require('date-template');
     let date = dateTemplate('%Y-%M-%D', deadline);
-
+    
     api
-        .crudApi(baseUrl+`${date}/`)
+        .crudApi(baseUrl + `${date}/`)
         .fetchAll()
         .then(response => {
             dispatch({
@@ -57,7 +57,7 @@ export const updateDeclarationCorrectness = (id, data, onSuccess) => dispatch =>
         .then(response => {
             dispatch({
                 type: UPDATE_DECLARATION,
-                payload: {id, ...data}
+                payload: { id, ...data }
             })
             onSuccess();
         })
