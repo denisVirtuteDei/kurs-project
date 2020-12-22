@@ -74,8 +74,8 @@ export const NewCheckPart = (props) => {
     event.preventDefault();
     if (validate()) {
       let check = {
-        ...values,
-        fkRegPerson: 2
+        bankCheck: {...values},
+        unp: window.sessionStorage.getItem('username')
       }
       props.createCheck(check, () => { alert('inserted.') })
     }

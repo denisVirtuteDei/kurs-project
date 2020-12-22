@@ -24,8 +24,8 @@ const useRowStyles = makeStyles((theme) => ({
         },
     },
     buttonItem: {
-        margin: theme.spacing(1),
-        float: "right",
+        margin: '20px',
+
     },
 }));
 
@@ -48,7 +48,7 @@ const useRowStyles = makeStyles((theme) => ({
 // };
 
 export default function Row(props) {
-    
+
     const row = props.row;
     const [open, setOpen] = React.useState(false);
     const [buttonActive, setActive] = React.useState(row.data.isCorrect);
@@ -59,7 +59,7 @@ export default function Row(props) {
             ...row.data,
             isCorrect: true
         }
-        row.func(data.id, data, ()=>{})
+        row.func(data.id, data, () => { })
         setActive(true);
     }
     const disable = () => {
@@ -67,13 +67,9 @@ export default function Row(props) {
             ...row.data,
             isCorrect: false
         }
-        row.func(data.id, data, () => {})
+        row.func(data.id, data, () => { })
         setActive(false);
     }
-
-    // React.useEffect(() => {
-        
-    // }, [])
 
     return (
         <React.Fragment>
@@ -154,17 +150,21 @@ export default function Row(props) {
                                 </TableBody>
                             </Table>
 
-                            <Grid container spacing={2} >
-                                <Grid item className={classes.buttonItem}>
-                                    <Button variant="success" disabled={buttonActive} onClick={enable}>
-                                        <CheckIcon />
-                                    </Button>
-                                </Grid>
-                                <Grid item className={classes.buttonItem}>
-                                    <Button variant="danger" onClick={disable}>
-                                        <CloseIcon />
-                                    </Button>
-                                </Grid>
+                            <Grid container spacing={2} style={{ float: 'left', margin: '5px' }}>
+                                {
+                                    buttonActive ? null : (<>
+                                        <Grid item >
+                                            <Button variant="success" disabled={buttonActive} onClick={enable}>
+                                                <CheckIcon />
+                                            </Button>
+                                        </Grid>
+                                        <Grid item>
+                                            <Button variant="danger" onClick={disable}>
+                                                <CloseIcon />
+                                            </Button>
+                                        </Grid> </>
+                                    )
+                                }
                             </Grid>
 
                         </Box>

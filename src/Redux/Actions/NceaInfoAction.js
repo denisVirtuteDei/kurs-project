@@ -8,7 +8,6 @@ export const fetchAllNceaInfo = () => dispatch => {
         .crudApi(baseUrl)
         .fetchAll()
         .then(response => {
-            debugger
             dispatch({
                 type: FETCH_ALL_NCEA,
                 payload: response.data

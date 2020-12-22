@@ -30,7 +30,7 @@ const Jumbotron = () => (
             <div className="overlay"/>
             <Container>
                 <h1>
-                    Кто-то
+                    B. Franklin
                 </h1>
                 <p>
                     Неизбежны только смерть и налоги

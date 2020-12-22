@@ -49,6 +49,7 @@ const DebtInfoPart = (props) => {
     const classes = useStyles();
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(30);
+    const id = window.sessionStorage.getItem('username');
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -60,7 +61,7 @@ const DebtInfoPart = (props) => {
     };
 
     useEffect(() => {
-        props.fetchAllDebtInfo()
+        props.fetchAllDebtInfo(id)
     }, []);
 
     let list = props.debtInfoList;

@@ -7,7 +7,6 @@ import Divider from "@material-ui/core/Divider";
 
 const Footer = () => (
     <div style={{
-        maxWidth: 600,
         margin: "auto",
         textAlign: "center",
         flexShrink: 0,

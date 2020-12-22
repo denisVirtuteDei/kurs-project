@@ -1,12 +1,12 @@
 import api from './Api';
 import { FETCH_ALL_DEBT_INFO } from '../Constants/Types';
 
-const baseUrl = 'https://localhost:44383/api/DebtInfo/503612177';
+const baseUrl = 'https://localhost:44383/api/DebtInfo/';
 
-export const fetchAllDebtInfo = () => dispatch => {
+export const fetchAllDebtInfo = (id) => dispatch => {
     api
         .crudApi(baseUrl)
-        .fetchAll()
+        .fetchById(id)
         .then(response => {
             dispatch({
                 type: FETCH_ALL_DEBT_INFO,

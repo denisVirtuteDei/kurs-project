@@ -28,16 +28,25 @@ const Registration = (props) => {
         onSelect={(k) => setKey(k)}
       >
         <Tab eventKey="f" title="Entity">
-          <EntityRegPart createEntity={props.createEntity} generatePassword={generatePassword} />
+          <EntityRegPart
+            nceaInfoList={props.nceaInfoList}
+            createEntity={props.createEntity}
+            generatePassword={generatePassword} />
         </Tab>
         <Tab eventKey="s" title="Self">
-          <SelfRegPart  generatePassword={generatePassword} />
+          <SelfRegPart
+            nceaInfoList={props.nceaInfoList}
+            createSelfPerson={props.createSelfPerson}
+            generatePassword={generatePassword} />
         </Tab>
         <Tab eventKey="t" title="Individ">
-          <IndividRegPart />
+          <IndividRegPart
+            nceaInfoList={props.nceaInfoList}
+            createIndividPerson={props.createIndividPerson}
+            generatePassword={generatePassword} />
         </Tab>
       </Tabs>
-      
+
     </Container>
   );
 }

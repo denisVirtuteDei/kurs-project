@@ -5,7 +5,6 @@ import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
@@ -13,17 +12,15 @@ import MenuItem from '@material-ui/core/MenuItem';
 const EntityRegPart = (props) => {
 
   const enterClick = () => {
-    const registration = {
-      id: 0,
-      fkPerson: 0,
-      ncea,
-      startDate
-    }
-
-    if (endDate > startDate) {
+    const username = window.sessionStorage.getItem('username');
+    if (username !== '') {
+      const regInfo = {
+        username,
+        ncea,
+        regDate
+      }
       const password = props.generatePassword();
-      debugger
-      const entity = {
+      const person = {
         unp,
         shortOrgTitle: title,
         firstName: fio.split(' ')[0],
@@ -34,19 +31,18 @@ const EntityRegPart = (props) => {
         telephone
       }
 
-      console.log([entity, registration, password]);
+      props.createEntity({ person, password }, regInfo)
     }
   }
 
-  const [unp, setUnp] = React.useState('');
-  const [title, setTitle] = React.useState('');
-  const [fio, setFio] = React.useState('');
-  const [number, setNumber] = React.useState('');
-  const [orgAddress, setOrgAddress] = React.useState('');
-  const [telephone, setTelephone] = React.useState('');
-  const [ncea, setNcea] = React.useState('');
-  const [startDate, setStartDate] = React.useState(new Date());
-  const [endDate, setEndDate] = React.useState(new Date());
+  const [unp, setUnp] = useState('');
+  const [title, setTitle] = useState('');
+  const [fio, setFio] = useState('');
+  const [number, setNumber] = useState('');
+  const [orgAddress, setOrgAddress] = useState('');
+  const [telephone, setTelephone] = useState('');
+  const [ncea, setNcea] = useState('');
+  const [regDate, setStartDate] = useState(new Date());
 
   const handleChange = (event) => {
     const re = /^[0-9\b]+$/;
@@ -57,10 +53,6 @@ const EntityRegPart = (props) => {
         setNumber(event.target.value)
     }
   }
-
-  useEffect(() => {
-    //props.fetchAllNceaInfo();
-  }, [])
 
   return (
     <Container>
@@ -154,7 +146,9 @@ const EntityRegPart = (props) => {
               </Select>
             </div>
           </Form.Group>
+
           <hr style={{ marginTop: "20px" }} />
+
           <Grid container spacing={2} style={{ marginTop: "15px" }}>
             <Grid item xs={3}>
               <Form.Label sm="6">Дата регистрации</Form.Label>
@@ -165,26 +159,13 @@ const EntityRegPart = (props) => {
                   format="dd/MM/yyyy"
                   margin="normal"
                   id="inline-start-date"
-                  value={startDate}
+                  value={regDate}
                   onChange={(date) => setStartDate(date)}
                 />
               </MuiPickersUtilsProvider>
             </Grid>
-            <Grid item xs={3}>
-              <Form.Label sm="6">Зе енд</Form.Label>
-              <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <KeyboardDatePicker
-                  disableToolbar
-                  variant="inline"
-                  format="dd/MM/yyyy"
-                  margin="normal"
-                  id="inline-end-date"
-                  value={endDate}
-                  onChange={(date) => setEndDate(date)}
-                />
-              </MuiPickersUtilsProvider>
-            </Grid>
           </Grid>
+
           <Grid item>
             <Button
               color="primary"
@@ -194,8 +175,9 @@ const EntityRegPart = (props) => {
               size="large"
             >
               Registrate
-              </Button>
+            </Button>
           </Grid>
+
         </Form>
       </div>
     </Container>

@@ -8,10 +8,11 @@ import { TaxpayersMaket } from '../TaxpayersLayout';
 class UserCabinetContainer extends React.Component {
 
     render() {
+        
         return (
             <>
-                <Route {...this.props} render={(props) => (
-                    window.sessionStorage.getItem('access_token') ? (
+                <Route render={() => (
+                    this.props.authInfo.access_token ? (
                         <>
                             <Switch>
                                 <Route path="/im/employees">
@@ -32,6 +33,8 @@ class UserCabinetContainer extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+    authInfo: state.authorization
+});
 
 export default connect(mapStateToProps, {})(withRouter(UserCabinetContainer));

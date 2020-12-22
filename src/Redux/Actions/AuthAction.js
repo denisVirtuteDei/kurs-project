@@ -8,6 +8,8 @@ export const getAuthToken = (username, password) => dispatch => {
         .then(response => {
             if (response.data.access_token) {
                 window.sessionStorage.setItem('access_token', response.data.access_token)
+                window.sessionStorage.setItem('username', response.data.username)
+                window.sessionStorage.setItem('priority', response.data.priority)
                 dispatch({
                     type: GET_AUTH_TOKEN,
                     payload: response.data

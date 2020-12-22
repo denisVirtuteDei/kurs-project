@@ -13,17 +13,17 @@ import MenuItem from '@material-ui/core/MenuItem';
 const SelfRegPart = (props) => {
 
   const enterClick = () => {
-    const registration = {
-      id: 0,
-      fkPerson: 0,
-      ncea,
-      startDate
-    }
-
-    if (endDate > startDate) {
+    const username = window.sessionStorage.getItem('username');
+    if (username !== '') {
+      const regInfo = {
+        username,
+        ncea,
+        regDate,
+      }
       const password = props.generatePassword();
+      debugger
 
-      const self = {
+      const person = {
         unp,
         shortOrgTitle: title,
         firstName: fio.split(' ')[0],
@@ -34,7 +34,7 @@ const SelfRegPart = (props) => {
         telephone
       }
 
-      console.log([self, registration, password]);
+      props.createSelfPerson({ person, password }, regInfo)
     }
   }
 
@@ -45,8 +45,7 @@ const SelfRegPart = (props) => {
   const [orgAddress, setOrgAddress] = React.useState('');
   const [telephone, setTelephone] = React.useState('');
   const [ncea, setNcea] = React.useState('');
-  const [startDate, setStartDate] = React.useState(new Date());
-  const [endDate, setEndDate] = React.useState(new Date());
+  const [regDate, setStartDate] = React.useState(new Date());
 
   const handleChange = (event) => {
     const re = /^[0-9\b]+$/;
@@ -57,10 +56,6 @@ const SelfRegPart = (props) => {
         setNumber(event.target.value)
     }
   }
-
-  useEffect(() => {
-    //props.fetchAllNceaInfo();
-  }, [])
 
   return (
     <Container>
@@ -154,7 +149,9 @@ const SelfRegPart = (props) => {
               </Select>
             </div>
           </Form.Group>
+
           <hr style={{ marginTop: "20px" }} />
+
           <Grid container spacing={2} style={{ marginTop: "15px" }}>
             <Grid item xs={3}>
               <Form.Label sm="6">Дата регистрации</Form.Label>
@@ -165,22 +162,8 @@ const SelfRegPart = (props) => {
                   format="dd/MM/yyyy"
                   margin="normal"
                   id="inline-start-date"
-                  value={startDate}
+                  value={regDate}
                   onChange={(date) => setStartDate(date)}
-                />
-              </MuiPickersUtilsProvider>
-            </Grid>
-            <Grid item xs={3}>
-              <Form.Label sm="6">Зе енд</Form.Label>
-              <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <KeyboardDatePicker
-                  disableToolbar
-                  variant="inline"
-                  format="dd/MM/yyyy"
-                  margin="normal"
-                  id="inline-end-date"
-                  value={endDate}
-                  onChange={(date) => setEndDate(date)}
                 />
               </MuiPickersUtilsProvider>
             </Grid>

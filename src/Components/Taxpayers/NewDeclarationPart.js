@@ -54,6 +54,7 @@ export const NewDeclarationPart = (props) => {
   }
 
   const [errors, setErrors] = useState({});
+  const id = window.sessionStorage.getItem('username');
 
   const [values, setValues] = useState(initialFieldVales);
   
@@ -82,7 +83,7 @@ export const NewDeclarationPart = (props) => {
 
   useEffect(() => {
     props.fetchAllNceaInfo();
-    props.fetchByIdCheckInfo();
+    props.fetchByIdCheckInfo(id);
   }, [])
 
   return (
@@ -91,7 +92,7 @@ export const NewDeclarationPart = (props) => {
       <h1>New declaration</h1>
       <Form autoComplete="off" onSubmit={handleSubmit}>
         <Grid container spacing={2}>
-          <Grid item xs={3}>
+          <Grid item xs={4}>
             <FormControl
               variant="outlined"
               className={classes.formControl}
@@ -117,7 +118,7 @@ export const NewDeclarationPart = (props) => {
               {errors.ncea && (<FormHelperText>{errors.ncea}</FormHelperText>)}
             </FormControl>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={4}>
             <FormControl variant="outlined" className={classes.formControl}
               {...(errors.fkBankCheck && { error: true })}>
               <InputLabel id="demo-simple-select-outlined-label">Check ID</InputLabel>

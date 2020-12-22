@@ -29,10 +29,10 @@ export const fetchChecks = (deadline) => dispatch => {
 }
 
 //fetch by person unp
-export const fetchByIdCheckInfo = () => dispatch => {
+export const fetchByIdCheckInfo = (id) => dispatch => {
     api
         .crudApi(fetchByIdUrl)
-        .fetchById(503612177)
+        .fetchById(id)
         .then(response => {
             dispatch({
                 type: FETCH_BY_ID_BANK_CHECK,
