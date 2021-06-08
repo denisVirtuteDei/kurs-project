@@ -1,11 +1,10 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
 import Grid from '@material-ui/core/Grid'
 import LeftToolBar from './LeftToolBar'
 import { Switch, Route } from "react-router-dom";
-import MessagesContainer from "./HOC/MessagesContainer";
-import EntityContainer from './HOC/EntityContainer';
-import RegContainer from './HOC/RegContainer';
+import Messages from './Employees/MessageHeader'
+import Entity from './EntityPersons';
+import Registration from './Employees/Registration';
 
 const sidebarUrls = [
     {
@@ -34,9 +33,9 @@ const EmployeeMaket = (props) => {
             </Grid>
             <Grid item xs={10}>
                 <Switch>
-                    <Route path="/im/employees/messages" component={MessagesContainer} />
-                    <Route path="/im/employees/registration" component={RegContainer} />
-                    <Route path="/im/employees/debtors_info" component={EntityContainer} />
+                    <Route path="/im/employees/messages" component={Messages} />
+                    <Route path="/im/employees/registration" component={Registration} />
+                    <Route path="/im/employees/debtors_info" component={Entity} />
                 </Switch>
             </Grid>
         </Grid>

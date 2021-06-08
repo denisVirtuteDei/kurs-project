@@ -20,8 +20,7 @@ import stonks from '../../stonks.jpg'
 
 const About = () => {
   return (
-    <Container style={{minHeight: '550px', textAlign: 'center', padding: '10px'}}>
-    </Container>
+    <Container style={{ minHeight: '550px', textAlign: 'center', padding: '10px' }} />
   )
 };
 

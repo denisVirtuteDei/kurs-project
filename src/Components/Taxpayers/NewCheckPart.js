@@ -1,143 +1,169 @@
-import React, { useState, useEffect } from "react";
-import { Container, Form, Button } from "react-bootstrap";
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import React, { useState, useEffect } from 'react'
+import { Container, Form, Button } from 'react-bootstrap'
+import { makeStyles } from '@material-ui/core/styles'
+import TextField from '@material-ui/core/TextField'
 import Toolbar from '@material-ui/core/Toolbar'
+import InputLabel from '@material-ui/core/InputLabel'
 import Grid from '@material-ui/core/Grid'
-import Checkbox from '@material-ui/core/Checkbox'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
+import MenuItem from '@material-ui/core/MenuItem'
+import FormControl from '@material-ui/core/FormControl'
+import Select from '@material-ui/core/Select'
+import FormHelperText from '@material-ui/core/FormHelperText'
+import { useSelector, useDispatch } from 'react-redux'
+import { createDeclarationRequest } from '../../Redux/Actions/DeclarationAction'
+import { fetchNceaRequest } from '../../Redux/Actions/NceaInfoAction'
+import { fetchByIdCheckInfoRequest } from '../../Redux/Actions/BankCheckInfoAction'
 
-
-  //TODO
-  //
-  //Init fkRegPerson with Auth
-  //
-
-
-
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   formControl: {
-    marginTop: theme.spacing(3),
+    margin: theme.spacing(2),
     minWidth: 250,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
   },
   button: {
     margin: theme.spacing(2),
     float: 'right',
-  }
-
-}));
+  },
+}))
 
 const initialFieldVales = {
-  fkRegPerson: 0,
-  title: '',
-  finalSum: 0,
-  payedDate: '',
-  isDebtRepayment: false,
+  ncea: [''],
+  fkBankCheck: [],
+  taxAmount: 0,
 }
 
-export const NewCheckPart = (props) => {
+const NewDeclarationPart = () => {
+  const classes = useStyles()
+  const dispatch = useDispatch()
+  const id = useSelector(state => state.authorization.username)
+  const nceaInfoList = useSelector(state => state.ncea.data)
+  const checkInfoList = useSelector(state => state.checkInfo.backChecks)
 
-  const classes = useStyles();
+  const [errors, setErrors] = useState({})
+
+  const [values, setValues] = useState(initialFieldVales)
 
   const validate = (fieldValues = values) => {
-    let temp = {};
-    if ('title' in fieldValues)
-      temp.title = fieldValues.title ? "" : "This field is required";
-    if ('finalSum' in fieldValues)
-      temp.finalSum = fieldValues.finalSum ? "" : "This field is required";
-    if ('payedDate' in fieldValues)
-      temp.payedDate = fieldValues.payedDate ? "" : "This field is required";
+    let temp = {}
+    if ('ncea' in fieldValues) temp.ncea = fieldValues.ncea ? '' : 'This field is required'
+    if ('fkBankCheck' in fieldValues)
+      temp.fkBankCheck = fieldValues.fkBankCheck ? '' : 'This field is required'
+    if ('taxAmount' in fieldValues)
+      temp.taxAmount = fieldValues.taxAmount >= 0 ? '' : 'This field is required'
 
     setErrors({
-      ...temp
+      ...temp,
     })
 
-    if (fieldValues === values)
-      return Object.values(temp).every(x => x === "");
+    if (fieldValues === values) return Object.values(temp).every(x => x === '')
   }
 
-  const [errors, setErrors] = useState({});
-
-  const [values, setValues] = useState(initialFieldVales);
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+  const handleChange = event => {
+    const { name, value } = event.target
     const fieldValue = { [name]: value }
     setValues({
       ...values,
       ...fieldValue,
-      isDebtRepayment: event.target.checked
-    });
-    validate(fieldValue);
-  };
-  
-  const handleSubmit = (event) => {
-    event.preventDefault();
+    })
+    validate(fieldValue)
+  }
+
+  const handleSubmit = event => {
+    event.preventDefault()
     if (validate()) {
-      let check = {
-        bankCheck: {...values},
-        unp: window.sessionStorage.getItem('username')
+      let declaration = {
+        fkNcea: values.ncea,
+        fkBankCheck: values.fkBankCheck,
+        taxAmount: parseInt(values.taxAmount),
       }
-      props.createCheck(check, () => { alert('inserted.') })
+      // console.log(declaration);
+      dispatch(createDeclarationRequest(declaration))
     }
   }
+
+  useEffect(() => {
+    dispatch(fetchNceaRequest())
+    dispatch(fetchByIdCheckInfoRequest(id))
+  }, [])
 
   return (
     <Container>
       <Toolbar />
       <h1>New check</h1>
-      <Form autoComplete="off" onSubmit={handleSubmit}>
+      <Form autoComplete='off' onSubmit={handleSubmit}>
         <Grid container spacing={2}>
-          <Grid className="justify-content-xs" item xs={10} >
-            <TextField
-              name="title"
-              label="Title"
-              variant="outlined"
-              value={values.title}
-              onChange={handleChange}
+          <Grid item xs={4}>
+            <FormControl
+              variant='outlined'
               className={classes.formControl}
-              style={{ width: 530 }}
-              {...(errors.title && { error: true, helperText: errors.title })}
-            />
+              {...(errors.ncea && { error: true })}
+            >
+              <InputLabel id='demo-simple-select-outlined-label'>NCEA</InputLabel>
+              <Select
+                labelId='demo-simple-select-outlined-label'
+                name='ncea'
+                id='demo-simple-select-outlined'
+                value={values.ncea}
+                onChange={handleChange}
+                label='NCEA'
+              >
+                {nceaInfoList.map(el => (
+                  <MenuItem value={el.id}>{el.ncea}</MenuItem>
+                ))}
+              </Select>
+              {errors.ncea && <FormHelperText>{errors.ncea}</FormHelperText>}
+            </FormControl>
           </Grid>
-          <Grid className="justify-content-xs" item xs={3} >
-            <TextField
-              name="finalSum"
-              label="Final sum"
-              type="number"
-              variant="outlined"
-              value={values.finalSum}
-              onChange={handleChange}
+          <Grid item xs={4}>
+            <FormControl
+              variant='outlined'
               className={classes.formControl}
-              {...(errors.finalSum && { error: true, helperText: errors.finalSum })}
-            />
+              {...(errors.fkBankCheck && { error: true })}
+            >
+              <InputLabel id='demo-simple-select-outlined-label'>Check ID</InputLabel>
+              <Select
+                labelId='demo-simple-select-outlined-label'
+                name='fkBankCheck'
+                id='demo-simple-select-outlined'
+                value={values.fkBankCheck}
+                onChange={handleChange}
+                label='Check ID'
+              >
+                {checkInfoList.map(el => {
+                  return <MenuItem value={el.checkId}>{el.title}</MenuItem>
+                })}
+              </Select>
+              {errors.fkBankCheck && <FormHelperText>{errors.fkBankCheck}</FormHelperText>}
+            </FormControl>
           </Grid>
-          <Grid className="justify-content-xs" item xs={3} >
+          <Grid className='justify-content-xs' item xs={3} className={classes.formControl}>
             <TextField
-              name="payedDate"
-              label="Payed date"
-              variant="outlined"
-              value={values.payedDate}
+              name='taxAmount'
+              label='Tax amount'
+              type='number'
+              variant='outlined'
+              value={values.taxAmount}
               onChange={handleChange}
-              className={classes.formControl}
-
-              {...(errors.payedDate && { error: true, helperText: errors.payedDate })}
-            />
-          </Grid>
-          <Grid className="justify-content-xs" item xs={12} >
-            <FormControlLabel
-              control={
-                <Checkbox checked={values.isDebtRepayment} onChange={handleChange} name="isDebtRepayment" />
-              }
-              className={classes.formControl}
-              label="Is debt repayment"
-              inputProps={{ 'aria-label': 'primary checkbox' }}
+              {...(errors.taxAmount && { error: true, helperText: errors.taxAmount })}
             />
           </Grid>
           <Grid item xs={12}>
-            <Button as="input" type="submit" size="large" value="Send" className={classes.button} item xs={2} />
+            <Button
+              as='input'
+              type='submit'
+              size='large'
+              value='Send'
+              className={classes.button}
+              item
+              xs={2}
+            />
           </Grid>
         </Grid>
       </Form>
-    </Container >
+    </Container>
   )
 }
+
+export default NewDeclarationPart

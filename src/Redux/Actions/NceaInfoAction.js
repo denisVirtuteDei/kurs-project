@@ -1,17 +1,15 @@
-import api from './Api';
-import { FETCH_ALL_NCEA } from '../Constants/Types';
+import api from './Api'
+import { FETCH_ALL_NCEA_REQUEST, SET_NCEA } from '../Constants/Types'
 
-const baseUrl = 'https://localhost:44383/api/EconomicActivityTypes';
+const baseUrl = 'https://localhost:44383/api/EconomicActivityTypes'
 
-export const fetchAllNceaInfo = () => dispatch => {
-    api
-        .crudApi(baseUrl)
-        .fetchAll()
-        .then(response => {
-            dispatch({
-                type: FETCH_ALL_NCEA,
-                payload: response.data
-            })
-        })
-        .catch(err => console.log(err))
-}
+export const fetchNceaRequest = () => ({
+  type: FETCH_ALL_NCEA_REQUEST,
+})
+
+export const setNceaInfo = data => ({
+  type: SET_NCEA,
+  payload: data,
+})
+
+export const fetchAllNceaInfo = () => api.crudApi(baseUrl).fetchAll()

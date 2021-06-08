@@ -63,16 +63,3 @@ const PussyPage = (props) => {
 }
 
 export default PussyPage;
-
-{/* <CarouselItem style={{ margin: '10px', height: '500px' }}>
-                            <img
-                                id={"img" + i.title}
-                                className="d-block w-100"
-                                src={i.img}
-                                alt="First slide"
-                                style={{position: 'absolute'}}
-                            />
-                            <Carousel.Caption>
-                                <h3>{i.title}</h3>
-                            </Carousel.Caption>
-                        </CarouselItem> */}

@@ -1,11 +1,7 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
 import Grid from '@material-ui/core/Grid'
 import LeftToolBar from './LeftToolBar'
 import { Switch, Route } from "react-router-dom";
-import MessagesContainer from "./HOC/MessagesContainer";
-import EntityContainer from './HOC/EntityContainer';
-import RegContainer from './HOC/RegContainer';
 import ImportantInfo from './AdminTopSecret/ImportantInfo';
 
 const sidebarUrls = [

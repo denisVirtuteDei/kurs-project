@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 import { Jumbotron as Jumbo, Container } from 'react-bootstrap'
-import stonks from '../../maxresdefault.jpg';
+import stonks from '../../maxresdefault.jpg'
 import styled from 'styled-components'
 
 const Styles = styled.div`
@@ -22,22 +22,17 @@ const Styles = styled.div`
             right: 0;
             z-index: -1;
         }
-    `;
+    `
 
 const Jumbotron = () => (
-    <Styles>
-        <Jumbo fluid className="jumbo">
-            <div className="overlay"/>
-            <Container>
-                <h1>
-                    B. Franklin
-                </h1>
-                <p>
-                    Неизбежны только смерть и налоги
-                </p>
-            </Container>
-        </Jumbo>
-    </Styles>
-
+  <Styles>
+    <Jumbo fluid className='jumbo'>
+      <div className='overlay' />
+      <Container>
+        <h1>B. Franklin</h1>
+        <p>Only death and taxes are inevitable</p>
+      </Container>
+    </Jumbo>
+  </Styles>
 )
-export default Jumbotron;
+export default Jumbotron

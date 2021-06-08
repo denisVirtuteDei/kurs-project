@@ -4,7 +4,7 @@ import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 import NavbarToggle from "react-bootstrap/esm/NavbarToggle";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import AuthContainer from "../HOC/AuthContainer"
+import AuthMenu from "../Authorization/AuthMenuLogic"
 
 const Styles = styled.div`
   a,
@@ -35,7 +35,7 @@ export default function NaviBar() {
                   <Link to="/about">About</Link>
                 </Nav.Link>
               </Nav>
-              <AuthContainer />
+              <AuthMenu />
             </NavbarCollapse>
           </Container>
         </Navbar>

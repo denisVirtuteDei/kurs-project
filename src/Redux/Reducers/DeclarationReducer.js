@@ -2,7 +2,7 @@ import {
     CREATE_DECLARATION,
     UPDATE_DECLARATION, 
     DELETE_DECLARATION,
-    FETCH_PERSONS_DECLARATIONS,
+    FETCH_PERSONS_TAXES,
 } from '../Constants/Types';
 
 const initialState = {
@@ -11,7 +11,7 @@ const initialState = {
 
 export const declarationReducer = (state = initialState, action) => {
     switch (action.type) {
-        case FETCH_PERSONS_DECLARATIONS:
+        case FETCH_PERSONS_TAXES:
             return {
                 ...state,
                 payedTaxes: action.payload

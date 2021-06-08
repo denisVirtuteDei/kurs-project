@@ -1,68 +1,61 @@
-import api from './Api';
+import api from './Api'
 import {
-    CREATE_DECLARATION,
-    UPDATE_DECLARATION,
-    FETCH_PERSONS_DECLARATIONS,
-} from '../Constants/Types';
+  CREATE_DECLARATION,
+  POST_DECLARATION,
+  UPDATE_DECLARATION,
+  UPDATE_DECLARATION_REQUEST,
+  FETCH_PERSONS_TAXES,
+  FETCH_PERSONS_TAXES_REQUEST,
+} from '../Constants/Types'
 
-const baseUrl = 'https://localhost:44383/api/PayedTaxes/';
+const baseUrl = 'https://localhost:44383/api/PayedTaxes/'
 
-export const fetchTaxes = (deadline) => dispatch => {
-    let dateTemplate = require('date-template');
-    let date = dateTemplate('%Y-%M-%D', deadline);
-    
-    api
-        .crudApi(baseUrl + `${date}/`)
-        .fetchAll()
-        .then(response => {
-            dispatch({
-                type: FETCH_PERSONS_DECLARATIONS,
-                payload: response.data
-            })
-        })
-        .catch(err => console.log(err))
+//***************************************************************//
+
+export const fetchTaxes = deadline => {
+  let dateTemplate = require('date-template')
+  let date = dateTemplate('%Y-%M-%D', deadline)
+
+  return api.crudApi(baseUrl + `${date}/`).fetchAll()
 }
 
-// export const fetchAllDeclaration = () => dispatch => {
-//     api
-//         .crudApi(baseUrl)
-//         .fetchAll()
-//         .then(response => {
-//             dispatch({
-//                 type: ACTION_TYPES.FETCH_ALL,
-//                 payload: response.data
-//             })
-//         })
-//         .catch(err => console.log(err))
-// }
+export const fetchTaxesRequest = deadline => ({
+  type: FETCH_PERSONS_TAXES_REQUEST,
+  payload: deadline,
+})
 
-export const createDeclaration = (data, onSuccess) => dispatch => {
-    api
-        .crudApi(baseUrl)
-        .create(data)
-        .then(response => {
-            dispatch({
-                type: CREATE_DECLARATION,
-                payload: response.data
-            })
-            onSuccess();
-        })
-        .catch(err => console.log(err))
-};
+export const fetchPersonsTaxes = deadline => ({
+  type: FETCH_PERSONS_TAXES,
+  payload: deadline,
+})
 
-export const updateDeclarationCorrectness = (id, data, onSuccess) => dispatch => {
-    api
-        .crudApi(baseUrl)
-        .update(id, data)
-        .then(response => {
-            dispatch({
-                type: UPDATE_DECLARATION,
-                payload: { id, ...data }
-            })
-            onSuccess();
-        })
-        .catch(err => console.log(err))
-};
+//***************************************************************//
+
+export const postDeclaration = data => api.crudApi(baseUrl).create(data)
+
+export const createDeclarationRequest = data => ({
+  type: POST_DECLARATION,
+  payload: data,
+})
+
+export const createDeclaration = data => ({
+  type: CREATE_DECLARATION,
+  payload: data,
+})
+
+//***************************************************************//
+
+export const updateDeclarationCorrectness = (id, data) => api.crudApi(baseUrl).update(id, data)
+
+export const updateDeclarationCorrectnessRequest = (id, data) => ({
+  type: UPDATE_DECLARATION_REQUEST,
+  payload: { id, data },
+})
+
+export const putDeclarationCorrectness = (id, data) => ({
+  type: UPDATE_DECLARATION,
+  payload: { id, ...data },
+})
 
 // export const deleteDeclaration = (id, onSuccess) => dispatch => {
 //     api
@@ -77,3 +70,16 @@ export const updateDeclarationCorrectness = (id, data, onSuccess) => dispatch =>
 //         })
 //         .catch(err => console.log(err))
 // };
+
+// export const fetchAllDeclaration = () => dispatch => {
+//     api
+//         .crudApi(baseUrl)
+//         .fetchAll()
+//         .then(response => {
+//             dispatch({
+//                 type: ACTION_TYPES.FETCH_ALL,
+//                 payload: response.data
+//             })
+//         })
+//         .catch(err => console.log(err))
+// }

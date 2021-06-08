@@ -1,40 +1,39 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
 import { Container, Table } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
 
-const EntityPersons = (props) => {
+const EntityPersons = () => {
+  const dispatch = useDispatch()
+  const entityList = useSelector(state => state.entityList)
 
-    useEffect(() => {
-        props.fetchAllEntityPersons()
-    }, [])
+  useEffect(() => {
+    //dispatch(fetchAllEntityPersons())
+  }, [])
 
-    let entityElements = props.entityList.map((record, index) => {
-        return (
+  return (
+    <Container>
+      <Table stripted brdered hover>
+        <thead>
+          <tr>
+            <th># UNP</th>
+            <th>Org name</th>
+            <th>Org address</th>
+            <th>Telephone</th>
+          </tr>
+        </thead>
+        <tbody>
+          {entityList.map((record, index) => (
             <tr key={index}>
-                <th>{record.unp}</th>
-                <th>{record.shortOrgTitle}</th>
-                <th>{record.orgAddress}</th>
-                <th>{record.telephone}</th>
+              <th>{record.unp}</th>
+              <th>{record.shortOrgTitle}</th>
+              <th>{record.orgAddress}</th>
+              <th>{record.telephone}</th>
             </tr>
-        )
-    })
+          ))}
+        </tbody>
+      </Table>
+    </Container>
+  )
+}
 
-    return (
-        <Container >
-            <Table stripted brdered hover>
-                <thead>
-                    <tr>
-                        <th># UNP</th>
-                        <th>Org name</th>
-                        <th>Org address</th>
-                        <th>Telephone</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {entityElements}
-                </tbody>
-            </Table>
-        </Container >
-    )
-};
-
-export default EntityPersons;
+export default EntityPersons
